@@ -1,20 +1,13 @@
 package com.cn.algorithm.LinkedList;
 
+import com.cn.algorithm.dataStructure.LinkedList.ListNode;
+
 /**
  * 类名:splitListToParts_725
  * 描述:TODO
  * 姓名:南风
  * 日期:2021-09-22 10:15
  **/
-
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode() {}
-    ListNode(int val) { this.val = val; }
-    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-}
-
 public class splitListToParts_725 {
 
     /**
@@ -27,22 +20,29 @@ public class splitListToParts_725 {
      * 返回一个由上述 k 部分组成的数组。
     **/
     public static void main(String[] args) {
-        ListNode head = new ListNode(0);
-        head.next = new ListNode(1);
-        head.next.next = new ListNode(2);
-        head.next.next.next = new ListNode(3);
-        head.next.next.next.next = new ListNode(4);
-        head.next.next.next.next.next = new ListNode(5);
-        head.next.next.next.next.next.next = new ListNode(6);
-        head.next.next.next.next.next.next.next = new ListNode(7);
+//        ListNode head = new ListNode(0);
+//        head.next = new ListNode(1);
+//        head.next.next = new ListNode(2);
+//        head.next.next.next = new ListNode(3);
+//        head.next.next.next.next = new ListNode(4);
+//        head.next.next.next.next.next = new ListNode(5);
+//        head.next.next.next.next.next.next = new ListNode(6);
+//        head.next.next.next.next.next.next.next = new ListNode(7);
 //        head.next.next.next.next.next.next.next.next = new ListNode(8);
 //        head.next.next.next.next.next.next.next.next.next = new ListNode(9);
 //        head.next.next.next.next.next.next.next.next.next.next = new ListNode(10);
+        listTestData listTestData = new listTestData();
+        ListNode head = listTestData.getTestData();
 
-        System.out.println(splitListToParts(head.next,3));
-
+        ListNode[] listNodes = splitListToParts(head, 3);
+        for (ListNode listNode : listNodes) {
+            while (listNode != null){
+                System.out.print(listNode.val + " ");
+                listNode = listNode.next;
+            }
+            System.out.println();
+        }
     }
-
 
     public static ListNode[] splitListToParts(ListNode head, int k) {
         ListNode p = new ListNode(0,head);

@@ -10,6 +10,11 @@ import com.cn.algorithm.dataStructure.LinkedList.ListNode;
  **/
 public class mergeKLists_23 {
 
+    /**
+     * 功能描述:给你一个链表数组，每个链表都已经按升序排列。
+     *
+     * 请你将所有链表合并到一个升序链表中，返回合并后的链表。
+    **/
     public static void main(String[] args) {
         ListNode l1 = new ListNode(1,new ListNode(4,new ListNode(5)));
         ListNode l2 = new ListNode(1,new ListNode(3,new ListNode(4)));
@@ -22,10 +27,14 @@ public class mergeKLists_23 {
         }
         String s = "";
         for (char c : s.toCharArray()) {
-            
         }
     }
 
+    /**
+    *功能描述:归并算法合并链表
+    *@param lists
+    *@return com.cn.algorithm.dataStructure.LinkedList.ListNode
+    **/
     public static ListNode mergeKLists(ListNode[] lists){
         return merge(lists,0, lists.length - 1);
     }

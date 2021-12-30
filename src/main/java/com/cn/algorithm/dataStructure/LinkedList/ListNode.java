@@ -7,8 +7,6 @@ package com.cn.algorithm.dataStructure.LinkedList;
  * 日期:2021-11-15 16:50
  **/
 public class ListNode {
-
-
     public int val;
 
     public ListNode next;
