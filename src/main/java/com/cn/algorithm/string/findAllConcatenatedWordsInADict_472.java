@@ -18,6 +18,17 @@ public class findAllConcatenatedWordsInADict_472 {
 
     private static Trie1 trie = new Trie1();
 
+    /**
+    *功能描述:给你一个 不含重复 单词的字符串数组 words ，请你找出并返回 words 中的所有 连接词 。
+     *
+     * 连接词 定义为：一个完全由给定数组中的至少两个较短单词组成的字符串。
+     *
+     * 输入：words = ["cat","cats","catsdogcats","dog","dogcatsdog","hippopotamuses","rat","ratcatdogcat"]
+     * 输出：["catsdogcats","dogcatsdog","ratcatdogcat"]
+     * 解释："catsdogcats" 由 "cats", "dog" 和 "cats" 组成;
+     *      "dogcatsdog" 由 "dog", "cats" 和 "dog" 组成;
+     *      "ratcatdogcat" 由 "rat", "cat", "dog" 和 "cat" 组成。
+    **/
     public static void main(String[] args) {
         String[] words = new String[]{"cat","cats","catsdogcats","dog","dogcatsdog","hippopotamuses","rat","ratcatdogcat"};
         List<String> result = findAllConcatenatedWordsInADict_1(words);
@@ -34,6 +45,11 @@ public class findAllConcatenatedWordsInADict_472 {
     }
 
 
+    /**
+    *功能描述: test version
+    *@param words
+    *@return java.util.List<java.lang.String>
+    **/
     public static List<String> findAllConcatenatedWordsInADict_1(String[] words) {
 
         List<String> list = new ArrayList<>();
