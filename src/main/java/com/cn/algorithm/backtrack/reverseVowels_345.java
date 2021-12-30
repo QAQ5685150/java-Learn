@@ -19,6 +19,7 @@ public class reverseVowels_345 {
         char[] c = s.toCharArray();
 
         while(i < j && i != j){
+            //双while找到第一对元音字符位置
             while(!set.contains(c[i])){
                 i++;
             }

@@ -11,17 +11,23 @@ public class ListNode {
 
     public ListNode next;
 
-    public ListNode() {}
+    public ListNode() {
+    }
 
-    public ListNode(int val) { this.val = val; }
+    public ListNode(int val) {
+        this.val = val;
+    }
 
-    public ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+    public ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
+    }
 
-    public static void printList(ListNode pNode){
-        while (pNode != null){
-            if(pNode.next != null) {
+    public static void printList(ListNode pNode) {
+        while (pNode != null) {
+            if (pNode.next != null) {
                 System.out.print(pNode.val + " -> ");
-            }else {
+            } else {
                 System.out.print(pNode.val);
             }
             pNode = pNode.next;

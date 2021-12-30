@@ -13,13 +13,13 @@ public class listTestData {
     private volatile static ListNode listNode;
 
     /**
-    *功能描述:双重检查单例模式
-    *@return com.cn.algorithm.LinkedList.ListNode
-    **/
-    public static ListNode newInstance(){
-        if(listNode == null){
-            synchronized (listTestData.class){
-                if(listNode == null){
+     * 功能描述:双重检查单例模式
+     * @return com.cn.algorithm.LinkedList.ListNode
+     **/
+    public static ListNode newInstance() {
+        if (listNode == null) {
+            synchronized (listTestData.class) {
+                if (listNode == null) {
                     listNode = new ListNode();
                 }
             }
@@ -28,10 +28,10 @@ public class listTestData {
     }
 
     /**
-    *功能描述:获取测试数据
-    *@return com.cn.algorithm.dataStructure.LinkedList.ListNode
-    **/
-    public ListNode getTestData(){
+     * 功能描述:获取测试数据
+     * @return com.cn.algorithm.dataStructure.LinkedList.ListNode
+     **/
+    public ListNode getTestData() {
         ListNode head = this.newInstance();
         head.next = new ListNode(1);
         head.next.next = new ListNode(2);
@@ -42,9 +42,5 @@ public class listTestData {
         head.next.next.next.next.next.next.next = new ListNode(7);
         return head;
     }
-
-
-
-
 
 }
