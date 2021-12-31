@@ -14,13 +14,9 @@ public class isNStraightHand_846 {
 
     public static void main(String[] args) {
         int[] hand = new int[]{1,2,3,6,2,3,4,7,5};
-
         int groupSize = 3;
-
         //System.out.println(isNStraightHand(hand,groupSize));
-
         System.out.println(isNStraightHand_1(hand,groupSize));
-
         System.out.println(isNStraightHand_2(hand,groupSize));
     }
 
@@ -101,9 +97,13 @@ public class isNStraightHand_846 {
             }
             for (int j = 0; j < groupSize; j++) {
                 int num = x + j;
+                //如果不存在“分组”后最小字符 返回false
                 if (!cnt.containsKey(num)) {
                     return false;
                 }
+                //有重复的才遍历，如果一个数存在多次，就意味着在划分的多个数组中存在，对“另一个”排序后的数组，把同组的统计过后移除hash表
+                //对于当前组的数，也是一样的逻辑，把出现过在数组中的数出现次数减一
+                //这个统计出现次数，对出现过的减一这种思路太妙了，我就是这块没想到怎么解，想了半天想不出来
                 cnt.put(num, cnt.get(num) - 1);
                 if (cnt.get(num) == 0) {
                     cnt.remove(num);
