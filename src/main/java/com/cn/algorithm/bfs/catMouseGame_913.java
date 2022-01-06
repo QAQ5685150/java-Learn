@@ -1,9 +1,6 @@
 package com.cn.algorithm.bfs;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * 类名: catMouseGame_913
@@ -93,11 +90,65 @@ public class catMouseGame_913 {
         return 0;
     }
 
+    static final int MOUSE_WIN = 1;
+    static final int CAT_WIN = 2;
+    static final int DRAW = 0;
+    static int n;
+    static int[][] graph;
+    static int[][][] dp;
 
+    /**
+    *功能描述:题解 bfs
+    *@param graph
+    *@return int
+    **/
     public static int catMouseGame_bfs(int[][] graph) {
+        n = graph.length;
+        graph = graph;
+        dp = new int[n][n][n * 2];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                Arrays.fill(dp[i][j], -1);
+            }
+        }
+        return getResult(1, 2, 0);
+    }
 
+    private static int getResult(int mouse, int cat, int turns) {
+        if (turns == n * 2) {
+            return DRAW;
+        }
+        if (dp[mouse][cat][turns] < 0) {
+            if (mouse == 0) {
+                dp[mouse][cat][turns] = MOUSE_WIN;
+            } else if (cat == mouse) {
+                dp[mouse][cat][turns] = CAT_WIN;
+            } else {
+                getNextResult(mouse, cat, turns);
+            }
+        }
+        return dp[mouse][cat][turns];
+    }
 
-
-        return 0;
+    private static void getNextResult(int mouse, int cat, int turns) {
+        int curMove = turns % 2 == 0 ? mouse : cat;
+        int defaultResult = curMove == mouse ? CAT_WIN : MOUSE_WIN;
+        int result = defaultResult;
+        int[] nextNodes = graph[curMove];
+        for (int next : nextNodes) {
+            if (curMove == cat && next == 0) {
+                continue;
+            }
+            int nextMouse = curMove == mouse ? next : mouse;
+            int nextCat = curMove == cat ? next : cat;
+            int nextResult = getResult(nextMouse, nextCat, turns + 1);
+            if (nextResult != defaultResult) {
+                result = nextResult;
+                if (result != DRAW) {
+                    break;
+                }
+            }
+        }
+        dp[mouse][cat][turns] = result;
     }
 }
