@@ -1,4 +1,4 @@
-package com.cn.algorithm.tree;
+package com.cn.algorithm.string;
 
 import java.util.*;
 
@@ -89,9 +89,17 @@ public class wordBreak_139 {
 
         System.out.println(wordBreakByTrie(test, wordDict));
 
+        System.out.println(dp(test, wordDict));
+        System.out.println(backpack(test, wordDict));
     }
 
-    public static boolean wordBreak(String s, List<String> wordDict) {
+    /**
+    *功能描述:test
+    *@param s
+    *@param wordDict
+    *@return boolean
+    **/
+    public static boolean wordBreak_test(String s, List<String> wordDict) {
         HashSet<String> set = new HashSet<>();
         for(int i = 0;i < wordDict.size(); i++){
             set.add(wordDict.get(i));
@@ -124,6 +132,12 @@ public class wordBreak_139 {
         return false;
     }
 
+    /**
+    *功能描述:动态规划题解
+    *@params
+    *@param wordDict
+    *@return boolean
+    **/
     public static boolean dp(String s, List<String> wordDict){
         HashSet<String> set = new HashSet<>();
         int maxlen = 0;
@@ -147,6 +161,43 @@ public class wordBreak_139 {
             }
         }
         return dp[len];
+    }
+
+    /**
+    *功能描述:回溯法题解
+    *@param s
+    *@param wordDict
+    *@return boolean
+    **/
+    public static boolean backpack(String s, List<String> wordDict){
+        Set<Integer>[] memory = new Set[s.length()];
+        for (int i = 0; i < memory.length; i++) {
+            memory[i] = new HashSet<>();
+        }
+        wordDict.sort(Comparator.comparingInt(value -> value.length()));
+        return back(0, s, wordDict, memory);
+    }
+
+    private static boolean back(int idx, String s, List<String> wordDict, Set<Integer>[] memory) {
+        if (idx >= s.length()) {
+            return true;
+        }
+        for (int i = 0; i < wordDict.size(); i++) {
+            if (idx + wordDict.get(i).length() > s.length()) {
+                return false;
+            }
+            if (memory[idx].contains(i)) {
+                continue;
+            }
+            if (s.substring(idx, idx + wordDict.get(i).length()).equals(wordDict.get(i))) {
+                if (back(idx + wordDict.get(i).length(), s, wordDict, memory)) {
+                    return true;
+                } else {
+                    memory[idx].add(i);
+                }
+            }
+        }
+        return false;
     }
 
 }
