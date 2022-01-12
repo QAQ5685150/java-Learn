@@ -43,7 +43,7 @@ public class dynProxy implements InvocationHandler {
         newInstance.save();
         System.out.println("==========================");
         dynProxy dynProxy = new dynProxy(new Iuserdao2Impl(13));
-        Iuserdao2 newInstance1 = (Iuserdao2) dynProxy.getNewInstance();
+        Iuserdao2Impl newInstance1 = (Iuserdao2Impl) dynProxy.getNewInstance();
         System.out.println("get return : " + newInstance1.update());
         System.out.println(9 / 10);
     }

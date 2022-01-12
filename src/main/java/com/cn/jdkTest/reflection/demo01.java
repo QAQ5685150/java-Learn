@@ -11,6 +11,24 @@ import java.lang.reflect.Method;
  * 日期:2021-11-03 15:19
  **/
 public class demo01 {
+
+
+    private static String testStatic;
+
+    private String notStatic;
+
+    static void staticMethod(){
+        System.out.println("this is a static method");
+    }
+
+    public void NotStatic(){
+        System.out.println("this is a method not static");
+    }
+
+    static {
+        System.out.println("this is a static, classLoader will not execute this static");
+    }
+
     public static void main(String[] args) throws ClassNotFoundException, NoSuchFieldException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         Class class1 = Class.forName("com.cn.pojo.person");
         System.out.println("===========================================");
@@ -51,7 +69,5 @@ public class demo01 {
         }
 
         System.out.println("=====");
-
-
     }
 }
