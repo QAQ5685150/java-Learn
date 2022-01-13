@@ -58,7 +58,7 @@ public class ProducerAndConsumer {
         ProducerAndConsumer pc = new ProducerAndConsumer();
         Producer producer = pc.new Producer();
         Consumer consumer = pc.new Consumer();
-        //producer.start();
-        //consumer.start();
+        producer.start();
+        consumer.start();
     }
 }
