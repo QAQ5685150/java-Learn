@@ -15,7 +15,7 @@ import java.io.IOException;
 
 /**
  * 类名: test
- * 描述: TODO
+ * 描述: 线程池 + http 测试接口并发
  * 姓名: @author南风
  * 日期: 2021-12-15 14:23
  **/

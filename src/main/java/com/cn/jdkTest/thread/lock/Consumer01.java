@@ -1,5 +1,7 @@
 package com.cn.jdkTest.thread.lock;
 
+import lombok.SneakyThrows;
+
 import java.util.concurrent.BlockingQueue;
 
 /**
@@ -16,6 +18,7 @@ public class Consumer01 implements Runnable {
         this.blockingQueue = blockingQueue;
     }
 
+    @SneakyThrows
     @Override
     public void run() {
         //消费忘加循环了 整差了……
