@@ -18,7 +18,7 @@ public class ThreadNotSafeDemo implements Runnable {
     }
 
     /**
-     * 功能描述:多线程下不安全
+     * 功能描述:若不使用同步代码块 多线程下会不安全
      * @return void
      **/
     public void getNext() {
