@@ -13,7 +13,8 @@ public class listTestData {
     private volatile static ListNode listNode;
 
     /**
-     * 功能描述:双重检查单例模式
+     * 功能描述:双重检查单例模式 双重检查意思是在synchronized前后各检查一次要创建的对象是否为空，否则多线程情况下可能出现
+     * 创建两次的情况 如果一个线程过了第一个检查，卡在syn 第二个创建好出去，卡在syn的进去没有判空，又创建了一次
      * @return com.cn.algorithm.LinkedList.ListNode
      **/
     public static ListNode newInstance() {

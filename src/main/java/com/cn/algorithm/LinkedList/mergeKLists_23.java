@@ -2,6 +2,10 @@ package com.cn.algorithm.LinkedList;
 
 import com.cn.algorithm.dataStructure.LinkedList.ListNode;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * 类名:mergeKLists_23
  * 描述:TODO
@@ -70,5 +74,55 @@ public class mergeKLists_23 {
             p.next = node2;
         }
         return dummy.next;
+    }
+}
+
+
+class test{
+
+    public static void main(String[] args) {
+        List<Integer> list = Arrays.asList(3, 2, 5, 7, 4, 6, 1, 8, 9);
+        for (Integer integer : merge(list)) {
+            System.out.print(integer + " ");
+        }
+    }
+
+    public static List<Integer> merge(List<Integer> list){
+
+        return merge(list,0,list.size());
+    }
+
+    public static List<Integer> merge(List<Integer> list, int l, int r){
+        if(l == r) return list;
+        int mid = (l + r) >> 1;
+        return process(merge(list.subList(l,mid), l, mid),merge(list,mid + 1, r));
+    }
+
+    public static List<Integer> process(List<Integer> l1, List<Integer> l2){
+        List<Integer> arr = new ArrayList<>();
+        int index1 = 0;
+        int index2 = 0;
+        while (index1 <= l1.size() && index2 <= l2.size()){
+            Integer i1 = l1.get(index1);
+            Integer i2 = l2.get(index2);
+            if(i1 <= i2){
+                arr.add(i1);
+                index1++;
+            }else {
+                arr.add(i2);
+                index2++;
+            }
+        }
+        if(index1 != l1.size() - 1){
+            for (int i = index1; i < l1.size(); i++) {
+                arr.add(l1.get(i));
+            }
+        }
+        if(index2 != l2.size() - 1){
+            for (int i = index2; i < l2.size(); i++) {
+                arr.add(l2.get(i));
+            }
+        }
+        return arr;
     }
 }
