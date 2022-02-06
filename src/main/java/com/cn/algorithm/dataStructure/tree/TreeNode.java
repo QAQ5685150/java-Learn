@@ -25,23 +25,6 @@ public class TreeNode {
         this.left = left;
         this.right = right;
     }
-
-//    @Override
-//    public String toString() {
-//        if(this == null){
-//            return "null";
-//        }
-//
-//        String data = String.valueOf(val) + " ";
-//        String left = this.left.toString();
-//        String right = this.right.toString();
-//
-//        return "TreeNode{" +
-//                "val=" + val +
-//                ", left=" + left +
-//                ", right=" + right +
-//                '}';
-//    }
 }
 
 

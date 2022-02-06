@@ -10,7 +10,7 @@ import java.util.*;
  * 姓名:南风
  * 日期:2021-11-22 13:37
  **/
-public class Codec_297 {
+public class Codec_297_zzz {
 
     public static void main(String[] args) {
         TreeNode test = new TreeNode(21,
