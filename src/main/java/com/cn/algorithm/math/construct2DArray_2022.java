@@ -1,6 +1,6 @@
 package com.cn.algorithm.math;
 
-import com.cn.algorithm.util.ArrayUtils;
+import com.cn.algorithm.util.printUtils;
 
 /**
  * @Auther: @Ð¡ÄÔ¸«²»¿É°®
@@ -21,7 +21,7 @@ public class construct2DArray_2022 {
         int[] test = new int[]{1,3,4,5};
         int m = 2;
         int n = 2;
-        ArrayUtils.printArray(construct2DArray(test,m,n));
+        printUtils.printArray(construct2DArray(test,m,n));
 
     }
 
