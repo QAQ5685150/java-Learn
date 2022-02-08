@@ -1,4 +1,4 @@
-package com.cn.jdkTest.thread;
+package com.cn.jdkTest.thread.ThreadPool;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.LinkedBlockingQueue;

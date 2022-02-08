@@ -32,7 +32,7 @@ public class AppleMinBags {
     }
 
     /**
-     * 打表法做题，根据正确的代码打表总结数学规律写出表达式
+     * 打表法做题，根据正确的代码打表总结数学规律写出结果表达式 过OJ更快
      * @param apple
      * @return
      */
