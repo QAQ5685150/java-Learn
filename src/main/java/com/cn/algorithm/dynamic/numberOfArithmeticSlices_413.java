@@ -10,6 +10,8 @@ public class numberOfArithmeticSlices_413 {
 
     /**
     *功能描述: 差分数组，辅助数组dp保存当前位置 i 有多少等差数列存在，每多一个相等的，数组累加 +1当前位置的前缀和
+     * 例如 1，2，3，4，7，8，9   1，2，3，4 组成一个等差数列，(nums[0] - nums[1]) == (nums[1] - nums[2])判断1，2，3，4
+     * 1，2，3 是一个  下一个2，3，4判断还相等，说明1，2，3，4是一组，就在dp[i-1]位置+1 累加后1，2，3，4算3个，以此类推
     **/
     public static int numberOfArithmeticSlices(int[] nums) {
         int len = nums.length;
