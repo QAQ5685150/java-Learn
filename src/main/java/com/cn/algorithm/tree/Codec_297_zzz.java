@@ -12,6 +12,11 @@ import java.util.*;
  **/
 public class Codec_297_zzz {
 
+// test data
+//             21
+//        7            14
+//     1     1      2       2
+// 3     3
     public static void main(String[] args) {
         TreeNode test = new TreeNode(21,
                 new TreeNode(7, new TreeNode(1, new TreeNode(3), new TreeNode(3)),

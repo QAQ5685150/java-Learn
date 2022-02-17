@@ -3,6 +3,7 @@ package com.cn.algorithm.tree;
 import com.cn.algorithm.dataStructure.tree.TreeNode;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
@@ -15,14 +16,15 @@ import java.util.Stack;
 public class unrecursion {
 
     public static void main(String[] args) {
-        TreeNode test = new TreeNode(5,
-                new TreeNode(4, new TreeNode(11, new TreeNode(7), new TreeNode(2)),
-                        new TreeNode(0, new TreeNode(), new TreeNode())),
-                new TreeNode(8, new TreeNode(13, new TreeNode(5), new TreeNode(1)),
-                        new TreeNode(4)));
+        TreeNode test = TreeNode.getTestData();
         pro(test);
         System.out.println();
         mid(test);
+        System.out.println();
+
+
+        TreeNode node = TreeNode.insertData("");
+        pro(node);
     }
 
     public static List<Integer> pro(TreeNode treeNode){
@@ -71,10 +73,7 @@ public class unrecursion {
         TreeNode tmp = treeNode;
         while (!stack.isEmpty()){
 
-
-
         }
-
 
     }
 
