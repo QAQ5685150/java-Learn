@@ -18,8 +18,10 @@ public class selectSort {
         for (int i = 0; i < len - 1; i++) {
             int minIndex = i;
             for (int j = i + 1; j < len; j++) {
+                //选择排序的精髓，从所有后面的候选数字中选一个最小的（或最大的）
                 minIndex = arr[j] > arr[minIndex] ? minIndex : j;
             }
+            //选择完后，交换这两个，每一次让基准到最应该放的位置
             swap2(arr,minIndex,i);
         }
         return arr;
