@@ -1,5 +1,8 @@
 package com.cn.jdkTest.thread.review;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * @Auther: @Ğ¡ÄÔ¸«²»¿É°®
  * @Time: 2022-02-27 16:17
@@ -8,7 +11,7 @@ package com.cn.jdkTest.thread.review;
  */
 public class test01 {
 
-     static Object lock = new Object();
+     public static Object lock = new Object();
 
      static int i = 0;
 
@@ -16,7 +19,7 @@ public class test01 {
         while (true){
             synchronized (lock){
                 while (i != 0) {
-                    lock.notify();
+                    lock.notifyAll();
                     try {
                         lock.wait();
                     } catch (InterruptedException e) {
@@ -26,7 +29,7 @@ public class test01 {
 
                 i++;
                 System.out.println(Thread.currentThread().getName());
-                lock.notify();
+                lock.notifyAll();
 
                 try {
                     Thread.sleep(2000);
@@ -41,7 +44,7 @@ public class test01 {
         while (true){
             synchronized (lock){
                 while (i == 0) {
-                    lock.notify();
+                    lock.notifyAll();
                     try {
                         lock.wait();
                     } catch (InterruptedException e) {
@@ -51,7 +54,7 @@ public class test01 {
 
                 i--;
                 System.out.println(Thread.currentThread().getName());
-                lock.notify();
+                lock.notifyAll();
 
                 try {
                     Thread.sleep(2000);
@@ -65,8 +68,63 @@ public class test01 {
 
     public static void main(String[] args) throws InterruptedException {
         test01 t = new test01();
-        new Thread(()->{t.number();},"b").start();
-        new Thread(()->{t.number2();},"a").start();
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        executorService.submit(
+                () -> {
+                    int j = 0;
+                    while (true){
+                        synchronized (lock){
+                            while (i != 0) {
+                                //lock.notifyAll();
+                                try {
+                                    lock.wait();
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+                            i++;
+                            System.out.println(Thread.currentThread().getName() + " " + j++);
+                            lock.notifyAll();
+
+                            try {
+                                Thread.sleep(2000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }
+        );
+        executorService.submit(
+                () -> {
+                    char c = 'a';
+                    while (true){
+                        synchronized (lock){
+                            while (i == 0) {
+                                //lock.notifyAll();
+                                try {
+                                    lock.wait();
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+                            i--;
+                            System.out.println(Thread.currentThread().getName() + " " + c++);
+                            lock.notifyAll();
+
+                            try {
+                                Thread.sleep(2000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }
+        );
+//        new Thread(()->{t.number();},"b").start();
+//        new Thread(()->{t.number2();},"a").start();
 
 
     }
