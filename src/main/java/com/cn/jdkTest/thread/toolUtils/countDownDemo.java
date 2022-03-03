@@ -22,9 +22,6 @@ public class countDownDemo {
                 5,9,60L, TimeUnit.SECONDS,new SynchronousQueue<>()
                         ,factory1,new MyRejectHandler());
 
-//        for (int i = 0; i < queue.size(); i++) {
-//            new Thread(new task(queue,countDownLatch)).start();
-//        }
         for (int i = 0; i < queue.size(); i++) {
             executorService1.execute(new task(queue,countDownLatch));
         }
@@ -32,7 +29,7 @@ public class countDownDemo {
         try {
             System.out.println("waiting……");
             countDownLatch.await();
-            System.out.println("mission complete！");
+            System.out.println("mission complete!");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 /**
@@ -22,10 +24,9 @@ public class test {
 
 
     public static void main(String[] args) {
-        new Thread(new alpha(index,obj), "b").start();
-
-        new Thread(new number(index,obj), "a").start();
-
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        executorService.submit(new Thread(new alpha(index,obj), "b"));
+        executorService.submit(new Thread(new number(index,obj), "a"));
     }
 
 }
