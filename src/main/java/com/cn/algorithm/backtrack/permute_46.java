@@ -1,9 +1,11 @@
 package com.cn.algorithm.backtrack;
 
-import java.util.ArrayDeque;
+import com.cn.algorithm.util.printUtils;
+
 import java.util.ArrayList;
-import java.util.Deque;
+import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * 类名:permute_46
@@ -15,7 +17,11 @@ public class permute_46 {
 
     static List<List<Integer>> res = new ArrayList<>();
     public static List<List<Integer>> permute(int[] nums) {
-        process(nums,0);
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int num : nums) {
+            list.add(num);
+        }
+        process1(list,0);
         return res;
     }
 
@@ -41,7 +47,29 @@ public class permute_46 {
     }
 
     public static void main(String[] args) {
-        int[] nums = {1, 2, 3};
+        Scanner sc = new Scanner(System.in);
+        int length = sc.nextInt();
+        int[] nums = new int[length];
+        int index = 0;
+        for (int i = 0; i < length; i++) {
+            nums[index++] = sc.nextInt();
+        }
+
+
         System.out.println(permute(nums));
+    }
+
+    private static void process1(List<Integer> arr,int i){
+        if(arr.size() == i){
+            res.add(new ArrayList<>(arr));
+        }
+
+        for (int j = i; j < arr.size(); j++) {
+            Collections.swap(arr,i,j);
+            process1(arr,i + 1);
+            Collections.swap(arr,j,i);
+        }
+
+
     }
 }

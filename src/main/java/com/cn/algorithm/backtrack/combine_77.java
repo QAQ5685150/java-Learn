@@ -13,7 +13,12 @@ import java.util.List;
  **/
 public class combine_77 {
     public static void main(String[] args) {
-        combine(4,2);
+        for (List<Integer> list : combine(4, 2)) {
+            for (Integer integer : list) {
+                System.out.print(integer + " ");
+            }
+            System.out.println();
+        }
 
     }
 
