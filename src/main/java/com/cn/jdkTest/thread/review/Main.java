@@ -18,7 +18,6 @@ public class Main extends Thread {
                             LOCK.notifyAll();
                             try {
                                 LOCK.wait();
-
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
@@ -38,7 +37,6 @@ public class Main extends Thread {
                             LOCK.notifyAll();
                             try {
                                 LOCK.wait();
-
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }

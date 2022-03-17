@@ -8,6 +8,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 
 /**
@@ -22,78 +25,106 @@ public class test {
 
     public static Object obj = new Object();
 
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ExecutorService executorService = Executors.newCachedThreadPool();
-        executorService.submit(new Thread(new alpha(index,obj), "b"));
-        executorService.submit(new Thread(new number(index,obj), "a"));
-    }
-
-}
-
-class number implements Runnable{
-
-    private int index;
-
-    private Object obj;
-
-    public number(int index,Object obj) {
-        this.index = index;
-        this.obj = obj;
-    }
-
-    @SneakyThrows
-    @Override
-    public void run() {
-        int i = 1;
-        while (i < 10){
-            synchronized (obj){
-                if(index != 0){
-                    obj.wait();
-                }
-                index--;
-                System.out.print(i++);
-                //System.out.print(Thread.currentThread().getName());
-                obj.notify();
-            }
-
-        }
-    }
-}
-
-class alpha implements Runnable{
-
-    private static List<String> string = new ArrayList<>();
-
-    private int index;
-
-    private Object obj;
-
-    static {
-        Collections.addAll(string,"A","B","C","D","E","F","G","H","I","J");
-    }
-
-    public alpha(int index,Object obj) {
-        this.index = index;
-        this.obj = obj;
-    }
-
-    @SneakyThrows
-    @Override
-    public void run() {
-        synchronized (obj){
+        new Thread( () -> {
             int i = 0;
             while (i < 10){
-                if(index == 0){
-                    obj.wait();
+                synchronized (obj){
+                    while (index != 0){
+                        //obj.notifyAll();
+                        //这个判断条件过了，说明这块是暂时不想进来的，就唤醒其他线程执行另外的逻辑，自己进入等待
+                        try {
+                            obj.wait();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    index--;
+                    i++;
+                    System.out.print(i + " ");
+                    obj.notifyAll();
+                    //第二个notify，这时候代码快运行完毕，唤醒另外一个还在等待共享资源index的线程，
                 }
-                index++;
-                if(i < string.size()){
-                    System.out.print(string.get(i++));
-                }
-                //System.out.print(Thread.currentThread().getName());
-                obj.notify();
             }
+        } ).start();
+
+        new Thread( () -> {
+            int i = 0;
+            char c = 'a';
+            while (i < 10){
+                synchronized (obj){
+                    while (index == 0){
+                        //obj.notifyAll();
+                        try {
+                            obj.wait();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        obj.notify();
+                    }
+                    i++;
+                    index++;
+                    System.out.print(c++ + " ");
+                    obj.notifyAll();
+                }
+
+            }
+        } ).start();
+
+        //process();
+    }
+
+    static ReentrantLock lock = new ReentrantLock();
+    static Condition c1 = lock.newCondition();
+    static Condition c2 = lock.newCondition();
+    static Condition c3 = lock.newCondition();
+    static int in = 0;
+
+    public static void process(){
+        new Thread( () -> {
+                printA();
+        }).start();
+        new Thread( () -> {
+                printB();
+        }).start();
+        new Thread( () -> {
+                printC();
+        }).start();
+    }
+
+
+    public static void print(Lock lock, Condition cur, Condition next,int index,String s){
+        while (in < 30){
+            lock.lock();
+            try {
+                if(in % 3 != index){
+                    cur.await();
+                }
+                in++;
+                System.out.println(s);
+                next.signalAll();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                lock.unlock();
+            }
+
         }
     }
+
+    public static void printA(){
+        print(lock,c1,c2,0,"A");
+    }
+
+    public static void printB(){
+        print(lock,c2,c3,1,"B");
+    }
+
+    public static void printC(){
+        print(lock,c3,c1,2,"C");
+    }
+
 }
+
+
