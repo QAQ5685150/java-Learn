@@ -21,7 +21,7 @@ public class permute_46 {
         for (int num : nums) {
             list.add(num);
         }
-        process1(list,0);
+        process(nums,0);
         return res;
     }
 
@@ -56,7 +56,12 @@ public class permute_46 {
         }
 
 
-        System.out.println(permute(nums));
+        for (List<Integer> list : permute(nums)) {
+            for (Integer integer : list) {
+                System.out.print(integer + " ");
+            }
+            System.out.println();
+        }
     }
 
     private static void process1(List<Integer> arr,int i){

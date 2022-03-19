@@ -15,15 +15,16 @@ public class subsets_78 {
     private static List<List<Integer>> arr = new ArrayList<>();
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int length = sc.nextInt();
-        int i  = 0;
-        int[] test = new int[length];
-        while (i < length){
-            test[i] = sc.nextInt();
-            i++;
-        }
-        for (List<Integer> subset : subsets(test)) {
+//        Scanner sc = new Scanner(System.in);
+//        int length = sc.nextInt();
+//        int i  = 0;
+//        int[] test = new int[length];
+//        while (i < length){
+//            test[i] = sc.nextInt();
+//            i++;
+//        }
+        int[] test = new int[]{1,2,3};
+        for (List<Integer> subset : review(test)) {
             for (Integer integer : subset) {
                 System.out.print(integer + " ");
             }
@@ -46,4 +47,27 @@ public class subsets_78 {
             tmp.remove(tmp.size() - 1);
         }
     }
+
+    public static List<List<Integer>> review(int[] nums) {
+        List<List<Integer>> list = new ArrayList<>();
+        ArrayList<Integer> list1 = new ArrayList<>();
+        _process(list,nums,list1,0);
+        return list;
+    }
+
+    private static void  _process(List<List<Integer>> list, int[] nums, List<Integer> arr,int j) {
+//        if(arr.size() == nums.length){
+            list.add(new ArrayList<>(arr));
+//            return;
+//        }
+
+        for (int i = j; i < nums.length; i++) {
+            arr.add(nums[i]);
+            _process(list,nums,arr,j + 1);
+            arr.remove(arr.size() - 1);
+        }
+
+    }
+
+
 }

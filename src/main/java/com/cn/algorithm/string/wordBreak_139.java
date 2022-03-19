@@ -56,6 +56,12 @@ public class wordBreak_139 {
         }
     }
 
+    /**
+     * 前缀树实现版本，减少check(s.charAt(i),wordDick.get(i))判断时间，其他的思路是一样的，还是两次遍历
+     * @param s
+     * @param wordDict
+     * @return
+     */
     public static boolean wordBreakByTrie(String s, List<String> wordDict){
         Trie trie = new Trie();
         boolean[] dp = new boolean[s.length() + 1];
