@@ -1,9 +1,8 @@
 package com.cn.algorithm.tree;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import com.cn.algorithm.dataStructure.tree.TreeNode;
 
 /**
  * 类名: distanceK_863
@@ -18,7 +17,8 @@ public class distanceK_863 {
     public static List<Integer> list = new ArrayList<>();
 
     public static void main(String[] args) {
-
+        TreeNode testData = TreeNode.getTestData();
+        review(testData,2);
     }
 
 
@@ -65,6 +65,47 @@ public class distanceK_863 {
         if(root.right != null){
             map.put(root.right.val, root);
             dfsparent(root.right);
+        }
+    }
+
+    private static HashMap<Integer, TreeNode> nodeHashMap = new HashMap<>();
+
+    private static List<Integer> ans = new ArrayList<>();
+
+    public static void review(TreeNode root, int k){
+        dfeMap(root);
+        dfs(root,null,k,0);
+        for (Integer an : ans) {
+            System.out.print(an + " ");
+        }
+    }
+
+    public static void dfeMap(TreeNode root){
+        if(root.left != null){
+            nodeHashMap.put(root.left.val,root);
+            dfeMap(root.left);
+        }
+        if(root.right != null){
+            nodeHashMap.put(root.right.val,root);
+            dfeMap(root.right);
+        }
+    }
+
+    public static void dfs(TreeNode root, TreeNode from, int k, int index){
+        if(root == null){
+            return;
+        }
+        if(index == k){
+            ans.add(root.val);
+        }
+        if(root.left != null){
+            dfs(root.left,root,k,index + 1);
+        }
+        if(root.right != null){
+            dfs(root.right,root,k,index + 1);
+        }
+        if(nodeHashMap.get(root.val) != from){
+            dfs(nodeHashMap.get(root.val),from,k,index + 1);
         }
     }
 
