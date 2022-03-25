@@ -14,8 +14,12 @@ import java.util.List;
 public class reverseList_143 {
 
     public static void main(String[] args) {
-        ListNode node = new ListNode();
-        reverse(node);
+        ListNode node = new ListNode(1);
+        node.next = new ListNode(2);
+        node.next.next = new ListNode(3);
+        node.next.next.next = new ListNode(4);
+        node.next.next.next.next = new ListNode(5);
+        ListNode.printList(reverse(node));
     }
 
     public static ListNode reverse(ListNode node){
@@ -35,13 +39,14 @@ public class reverseList_143 {
 
         //步骤2 反转链表，分两段反转，一段是中间节点前的，一段是中间节点之后的
         //找到中间节点后，后半段反转链表（经典算法，可以递归也可以迭代）
-        ListNode reverse = reverse(slow, slow.next);
+        ListNode reverse = reverse(null, slow.next);
         //后半段反转完后锻炼，再反转前半部分
         slow.next = null;
-        ListNode reverse1 = reverse(p.next, p.next.next);
 
         //步骤3 合并反转后的两个链表
-        return mergeList(reverse,reverse1);
+        //理解错了，我以为两个都反正以后挂在后面就行了，其实是反转后一部分，前面的不懂，交错形成一个新链表挂在head后面
+        p.next = mergeList(reverse,node.next);
+        return p;
     }
 
     public static ListNode reverse(ListNode pre,ListNode cur){
@@ -54,11 +59,25 @@ public class reverseList_143 {
     }
 
     public static ListNode mergeList(ListNode pre,ListNode cur){
-        ListNode pNode = pre;
-        while (pNode.next != null){
-            pNode = pNode.next;
+        ListNode pNode = new ListNode();
+        ListNode p = pNode;
+        int index  = 0;
+        while (pre != null || cur != null){
+            if(index % 2 == 0){
+                pNode.next = pre;
+                pNode = pNode.next;
+                pre = pre.next;
+                index++;
+            }else {
+                pNode.next = cur;
+                pNode = pNode.next;
+                cur = cur.next;
+                index++;
+            }
         }
-        pNode.next = cur;
-        return pre;
+        if(pre != null){
+            pNode.next = pre;
+        }
+        return p.next;
     }
 }
