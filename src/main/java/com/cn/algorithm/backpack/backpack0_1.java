@@ -46,9 +46,4 @@ public class backpack0_1 {
         }
         return max;
     }
-
-
-
-
-
 }

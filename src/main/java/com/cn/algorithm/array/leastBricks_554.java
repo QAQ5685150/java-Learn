@@ -18,8 +18,9 @@ import java.util.stream.IntStream;
 public class leastBricks_554 {
 
     /**
-    *功能描述: map保存的<key,value> key是每一次当前位置有没有“空隙”存在，数组中位数上有，表示这里有个空隙，累计第一层该位置有，每一层空隙的位置互不影响都可以在map中get取出来
-     * 处理完后就遍历map，把
+    *功能描述: map保存的<key,value> key是每一次当前位置有没有“空隙”存在，数组中位数上有，表示这里有个空隙，
+     * 累计第一层该位置有，每一层空隙的位置互不影响都可以在map中get取出来
+     * 处理完后就遍历map，找到value保存的墙缝位置最小找到
     *@param args
     *@return void
     **/

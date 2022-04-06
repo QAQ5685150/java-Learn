@@ -29,7 +29,7 @@ public class Main {
         service.execute(c1);
         service.execute(c2);
         service.execute(c3);
-        Thread.sleep(10*1000);
+        Thread.sleep(10 * 1000);
         p1.stop();
         System.out.println("p1 stop");
         p2.stop();

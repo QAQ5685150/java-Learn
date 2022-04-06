@@ -14,7 +14,6 @@ public class isValidBST_98 {
         TreeNode root2 = new TreeNode(2,new TreeNode(1),new TreeNode(3));
         System.out.println(isValidBST2(root));
 
-
     }
 
     public static boolean isValidBST(TreeNode root) {

@@ -1,4 +1,4 @@
-package com.cn.algorithm.array;
+package com.cn.algorithm.priorityQueue;
 
 import com.cn.algorithm.util.inputUtils;
 

@@ -15,7 +15,7 @@ import java.util.List;
  **/
 public class combine_77 {
     public static void main(String[] args) {
-        for (List<Integer> list : review(4, 2)) {
+        for (List<Integer> list : combine(4, 2)) {
             for (Integer integer : list) {
                 System.out.print(integer + " ");
             }
@@ -40,9 +40,9 @@ public class combine_77 {
 
         for(int j = i;j <= n;j++){
             arr.addLast(j);
-           // process(list,arr,n,k,j+1);//index变化位传入for循环的参数j
-            process(list,arr,n,k,i+1);//index变化位传入其实形参i
-            arr.removeLast();
+            process(list,arr,n,k,j + 1);//index变化位传入for循环的参数j,进入循环以后，选取下一个位置的数字放入arr，就不会产生重复数
+            //process(list,arr,n,k,i+1);//index变化位传入其实形参i，如果传入的是i + 1 就会产生重复，
+            arr.removeLast();//回溯法最关键的一步，就是走到了叶子节点要返回了，把上一次加入的结果弹出，就“像是”回到了树状结构上一个节点位置
         }
     }
 

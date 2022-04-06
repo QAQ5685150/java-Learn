@@ -21,7 +21,7 @@ public class sortColors_75 {
                 if(p0 < p1){//p0<p1 说明p0的位置上有一个1，这个时候换0就会把1换到后面去，所以换完p0后要再换一次p1
                     swap(nums,i,p1);
                 }
-                ++p0;
+                ++p0;//p0是还完以后最右边的边界，换完0后边界值要++
                 ++p1;
             }
         }
@@ -66,7 +66,7 @@ public class sortColors_75 {
      * 输出：[0,0,1,1,2,2]
     **/
     public static void main(String[] args) {
-        int[] test = new int[]{2,1,0,0,0,2,1,0,0,2,1,0,0,1};
+        int[] test = new int[]{0,0,0,1,2,1};
         print(sortColors(test));
     }
 

@@ -38,7 +38,6 @@ public class trap_42 {
             }
             stack.push(i);
         }
-
         return ans;
     }
 

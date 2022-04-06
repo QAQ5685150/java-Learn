@@ -55,15 +55,15 @@ public class subsets_78 {
         return list;
     }
 
-    private static void  _process(List<List<Integer>> list, int[] nums, List<Integer> arr,int j) {
+    private static void  _process(List<List<Integer>> list, int[] nums, List<Integer> arr,int startIndex) {
 //        if(arr.size() == nums.length){
             list.add(new ArrayList<>(arr));
 //            return;
 //        }
 
-        for (int i = j; i < nums.length; i++) {
+        for (int i = startIndex; i < nums.length; i++) {
             arr.add(nums[i]);
-            _process(list,nums,arr,j + 1);
+            _process(list,nums,arr,i + 1);//往下一层的递归参数为i + 1 防止出现重复
             arr.remove(arr.size() - 1);
         }
 
