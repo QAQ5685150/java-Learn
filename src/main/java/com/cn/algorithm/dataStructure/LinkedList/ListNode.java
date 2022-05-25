@@ -1,5 +1,7 @@
 package com.cn.algorithm.dataStructure.LinkedList;
 
+import java.util.List;
+
 /**
  * 类名:ListNode
  * 描述:TODO
@@ -35,4 +37,24 @@ public class ListNode {
 
     }
 
+    public static ListNode getNode(List<Integer> list) {
+        ListNode node = new ListNode(0);
+        ListNode p = node;
+        for (Integer integer : list) {
+            node.next = new ListNode(integer);
+            node = node.next;
+        }
+        return p.next;
+    }
+
+    public static void printNode(ListNode pNode){
+        while (pNode != null){
+            if(pNode.next == null){
+                System.out.print(pNode.val);
+                break;
+            }
+            System.out.print(pNode.val + " -> ");
+            pNode = pNode.next;
+        }
+    }
 }

@@ -32,6 +32,7 @@ public class permute_46 {
                 list.add(num);
             }
             res.add(list);
+            return;
         }
         for(int j = i;j < nums.length;j++){
             swap(nums,i,j);

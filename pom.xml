@@ -60,6 +60,13 @@
             <version>21.0</version>
         </dependency>
 
+        <!--    JDBC    -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.23</version>
+        </dependency>
+
 <!--        <dependency>-->
 <!--            <groupId>net.jcip</groupId>-->
 <!--            <artifactId>jcip-annotations</artifactId>-->

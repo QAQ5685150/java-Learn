@@ -55,7 +55,7 @@ public class TreeNode {
         return helper(queue);
     }
 
-    public static TreeNode helper(Queue<String> queue){
+    private static TreeNode helper(Queue<String> queue){
         String poll = queue.poll();
         if("#".equals(poll)){
             return null;
@@ -69,6 +69,18 @@ public class TreeNode {
     public static void main(String[] args) {
         TreeNode node = TreeNode.insertData("21!7!1!3!#!#!3!#!#!1!#!#!14!2!#!#!2!#!#!");
         System.out.println(node);
+    }
+
+    @Override
+    public String toString() {
+        if(this == null){
+            return null;
+        }
+        return "TreeNode{" +
+                "val=" + val +
+                ", left=" + left.toString() +
+                ", right=" + right.toString() +
+                '}';
     }
 }
 
