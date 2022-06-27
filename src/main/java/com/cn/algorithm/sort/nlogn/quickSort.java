@@ -54,7 +54,56 @@ public class quickSort {
 
     public static void main(String[] args) {
         int[] test = new int[]{9,4,6,5,1,3,2,7,6,4};
-        quickSort(test,0,test.length - 1);
+        quickSort2(test,0,test.length - 1);
         printUtils.printArray(test);
     }
+
+    /**
+     * quicksort review
+     * 每一步的交换策略忘记了
+     * 首先找到基准，用一个参数接受，while循环，左边i指针往右找到比基准大的，停止
+     * 右边j往左找到比基准下小的，停止
+     * 交换i j位置，继续while直到i=j
+     * 退出循环后，交换i位置和当前基准tmp
+     * 交换完成后，进入下一次循环，对i = j的左边和右边分别递归该过程，直到完成排序
+     * @param arr
+     * @param low
+     * @param high
+     */
+    public static void quickSort2(int[] arr, int low, int high){
+        int i,j,tmp,t;
+        if(low > high){
+            return;
+        }
+
+        i = low;
+        j = high;
+        tmp = arr[low];
+
+        while (i < j){
+            while (tmp <= arr[j] && i < j){
+                j--;
+            }
+            while (tmp >= arr[i] && i < j){
+                i++;
+            }
+            if(i < j){
+                swap(arr,i,j);
+            }
+        }
+        arr[low] = arr[i];
+        arr[i] = tmp;
+
+        quickSort2(arr,low,j - 1);
+        quickSort2(arr,j + 1,high);
+
+    }
+
+    public static void swap(int[] arr, int i, int j){
+        int tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+    }
+
+
 }

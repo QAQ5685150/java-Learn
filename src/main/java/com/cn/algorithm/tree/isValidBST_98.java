@@ -1,5 +1,7 @@
 package com.cn.algorithm.tree;
 
+import com.cn.algorithm.dataStructure.tree.TreeNode;
+
 
 /**
  * 类名:isValidBST_98
@@ -45,17 +47,4 @@ public class isValidBST_98 {
         }
         return  validate(node.left, min, node.val) && validate(node.right, node.val, max);
     }
-}
-
-class TreeNode {
-      int val;
-      TreeNode left;
-      TreeNode right;
-      TreeNode() {}
-      TreeNode(int val) { this.val = val; }
-      TreeNode(int val, TreeNode left, TreeNode right) {
-          this.val = val;
-          this.left = left;
-          this.right = right;
-      }
 }

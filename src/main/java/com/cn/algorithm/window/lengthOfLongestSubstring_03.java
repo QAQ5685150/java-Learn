@@ -1,6 +1,6 @@
 package com.cn.algorithm.window;
 
-import java.util.HashSet;
+import java.util.*;
 
 /**
  * @Auther: @Ð¡ÄÔ¸«²»¿É°®
@@ -11,7 +11,10 @@ import java.util.HashSet;
 public class lengthOfLongestSubstring_03 {
 
     public static void main(String[] args) {
-        System.out.println(lengthOfLongestSubstring("abcddabcdef"));
+
+        //System.out.println(lengthOfLongestSubstring("abcddabcdef"));
+
+        System.out.println(lengthOfLongestSubstring_review("bbbbbb"));
     }
 
     public static int lengthOfLongestSubstring(String s) {
@@ -33,4 +36,24 @@ public class lengthOfLongestSubstring_03 {
         }
         return max;
     }
+
+
+    public static int lengthOfLongestSubstring_review(String s) {
+        Deque<Character> que = new ArrayDeque<>();
+        int max = 0;
+        for (char c : s.toCharArray()) {
+            while (que.contains(c)){
+                que.pop();
+            }
+            que.offer(c);
+            max = Math.max(que.size(),max);
+        }
+        return max;
+    }
+
+
+
+
+
+
 }

@@ -15,7 +15,7 @@ import java.util.List;
  **/
 public class combine_77 {
     public static void main(String[] args) {
-        for (List<Integer> list : combine(4, 2)) {
+        for (List<Integer> list : combine(4, 3)) {
             for (Integer integer : list) {
                 System.out.print(integer + " ");
             }

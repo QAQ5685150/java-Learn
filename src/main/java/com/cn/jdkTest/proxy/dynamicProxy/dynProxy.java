@@ -39,6 +39,7 @@ public class dynProxy implements InvocationHandler {
 
     public static void main(String[] args) {
         dynProxy dy = new dynProxy(new IuserdaoImpl("field2"));
+        //这里的Iuserdao newInstance就是一个代理对象Iuserdao是统一的接口，动态代理必须实现接口才能代理
         Iuserdao newInstance = (Iuserdao)dy.getNewInstance();
         newInstance.save();
         System.out.println("==========================");

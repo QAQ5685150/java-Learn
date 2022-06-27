@@ -70,7 +70,6 @@ public class countAndSay_38 {
             }
             str = sb.toString();
         }
-
         return str;
     }
 
