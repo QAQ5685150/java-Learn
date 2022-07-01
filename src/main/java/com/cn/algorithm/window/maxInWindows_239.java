@@ -8,7 +8,7 @@ import java.util.*;
  * @Description: TODO
  * @Project_name: java-learn
  */
-public class maxInWindows {
+public class maxInWindows_239 {
 
     public static void main(String[] args) {
         int[] test= new int[]{2,3,4,2,6,2,5,1};
@@ -54,7 +54,7 @@ public class maxInWindows {
             while (!qmax.isEmpty() && num[qmax.peekLast()] < num[i]){
                 qmax.pollLast();
             }
-            qmax.add(i);
+            qmax.addLast(i);
             //维护窗口的条件，过期移除 （i - size）是当前窗口最左端可以拿到的最小的那个数，如果和下标相等，就更新窗口
             if(qmax.peekFirst() == i - size){
                 qmax.pollFirst();

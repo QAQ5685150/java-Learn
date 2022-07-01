@@ -24,40 +24,41 @@ public class conditionDemo {
     private Condition c2 = lock.newCondition();
     private Condition c3 = lock.newCondition();
 
-    private void print(Integer target, String s, Lock lock, Condition cur, Condition next){
+    private void print(Integer target, String s, Lock lock, Condition cur, Condition next) {
         for (int i = 0; i < times; i++) {
             lock.lock();
             try {
-                if(index % 3 != target){
+                if (index % 3 != target) {
                     cur.await();
                 }
                 index++;
                 System.out.println(s + "  ----  " + index);
                 next.signalAll();
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
-            }finally {
+            } finally {
                 lock.unlock();
             }
         }
     }
 
-    public void printA(Integer target, String s){
-        print(target,s,lock,c1,c2);
+    public void printA(Integer target, String s) {
+        print(target, s, lock, c1, c2);
     }
 
-    public void printB(Integer target, String s){
-        print(target,s,lock,c2,c3);
+    public void printB(Integer target, String s) {
+        print(target, s, lock, c2, c3);
     }
-    public void printC(Integer target, String s){
-        print(target,s,lock,c3,c1);
+
+    public void printC(Integer target, String s) {
+        print(target, s, lock, c3, c1);
     }
 
     public static void main(String[] args) {
         conditionDemo c = new conditionDemo(100);
-        new Thread(() -> c.printA(0,"A")).start();
-        new Thread(() -> c.printB(1,"B")).start();
-        new Thread(() -> c.printC(2,"C")).start();
+        new Thread(() -> c.printA(0, "A")).start();
+        new Thread(() -> c.printB(1, "B")).start();
+        new Thread(() -> c.printC(2, "C")).start();
     }
 
 }

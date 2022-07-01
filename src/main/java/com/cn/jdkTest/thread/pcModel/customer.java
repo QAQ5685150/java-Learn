@@ -14,7 +14,7 @@ public class customer implements Runnable{
 
     private BlockingQueue<pcData> queue;
 
-    private static final int SLEEPTIME = 1000;
+    private static final int SLEEPTIME = 2000;
     public customer(BlockingQueue<pcData> queue){
         this.queue = queue;
     }

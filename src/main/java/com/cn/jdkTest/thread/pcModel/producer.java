@@ -18,7 +18,7 @@ public class producer implements Runnable {
 
     private static AtomicInteger count = new AtomicInteger();
 
-    private static final int SLEEPTIME = 100;
+    private static final int SLEEPTIME = 2000;
 
     public producer(BlockingQueue<pcData> blockingDeque) {
         this.blockingDeque = blockingDeque;
@@ -33,9 +33,9 @@ public class producer implements Runnable {
             while (isRunning) {
                 Thread.sleep(r.nextInt(SLEEPTIME));
                 data = new pcData(count.incrementAndGet());
-                System.out.println(data + " 加入队列");
+                System.out.println(data + " add to list");
                 if (!blockingDeque.offer(data, 2, TimeUnit.SECONDS)) {
-                    System.err.println(" 加入队列失败");
+                    System.err.println(" failed to add list");
                 }
             }
         } catch (InterruptedException e) {
