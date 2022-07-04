@@ -65,10 +65,4 @@ public class lengthOfLongestSubstring_03 {
         }
         return max;
     }
-
-
-
-
-
-
 }
