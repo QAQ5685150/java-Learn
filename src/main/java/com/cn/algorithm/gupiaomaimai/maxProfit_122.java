@@ -45,6 +45,11 @@ public class maxProfit_122 {
     }
 
 
+    /**
+     * dfs递归 -> dp的思路
+     * @param prices
+     * @return
+     */
     public static int maxProfit_dp(int[] prices){
         int len = prices.length;
         int[][] dp = new int[len + 1][2];
@@ -55,6 +60,7 @@ public class maxProfit_122 {
         dp[0][1] = -prices[0];
         for (int i = 1; i < len; i++) {
             //dp[i - 1][1] + prices[i] 表示我本来有股票，在今天卖出，状态从（有股票 -> 没股票）
+            //每次循环就是“过了一天” 今天卖出股票相当于没有股票了，和昨天没有股票的状态比选一个最大的
             dp[i][0] = Math.max(dp[i - 1][1] + prices[i],dp[i - 1][0]);
             //dp[i - 1][0] - prices[i] 表示我手上本来没有股票，现在去卖出，状态从（无 -> 有） 就是从收益里扣钱出去
             //在一位置买相当于收益为负 所以是dp[0][1] = -prices[0]
