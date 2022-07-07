@@ -75,6 +75,45 @@ public class mergeKLists_23 {
         }
         return dummy.next;
     }
+
+    public ListNode mergeKLists(ArrayList<ListNode> lists) {
+        int len = lists.size() - 1;
+        return process(lists,0,len);
+    }
+
+    public ListNode process(ArrayList<ListNode> lists, int i, int j){
+        //这块的返回逻辑和merge sort不一样，mergesort函数是void函数，i>l就返回了
+        //这里要从ArrayList<ListNode> 里面取数据，
+        if(i > j) return null;
+        if(i == j) return lists.get(i);
+        int mid = ((j + i) >> 1);
+        return mergeList(process(lists,i,mid),process(lists,mid + 1,j));
+    }
+
+    public ListNode mergeList(ListNode node1,ListNode node2){
+        if(node1 == null || node2 == null){
+            return node1 == null ? node2 : node1;
+        }
+        ListNode dd = new ListNode(-1);
+        ListNode dummy = dd;
+        while(node1 != null && node2 != null){
+            if(node1.val < node2.val){
+                dummy.next = node1;
+                node1 = node1.next;
+            }else{
+                dummy.next = node2;
+                node2 = node2.next;
+            }
+            dummy = dummy.next;
+        }
+        if(node1 != null){
+            dummy.next = node1;
+        }
+        if(node2 != null){
+            dummy.next = node2;
+        }
+        return dd.next;
+    }
 }
 
 

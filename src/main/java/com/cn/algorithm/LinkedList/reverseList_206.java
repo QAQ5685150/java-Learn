@@ -33,6 +33,8 @@ public class reverseList_206 {
     *@param node
     *@return ListNode
     **/
+    // pre -> cur -> next -> next1
+    // pre <- cur <- next <- next1
     public static ListNode reverseList1(ListNode node) {
         ListNode pre = null;
         ListNode cur = node;

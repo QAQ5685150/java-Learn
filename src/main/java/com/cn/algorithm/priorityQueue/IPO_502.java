@@ -47,12 +47,42 @@ public class IPO_502 {
     }
 
     public static void main(String[] args) {
-        int k = inputUtils.getInt();
-        int w = inputUtils.getInt();
-        int[] profits = inputUtils.getArr();
-        int[] capital = inputUtils.getArr();
-        int maximizedCapital = findMaximizedCapital(k, w, profits, capital);
+//        int k = inputUtils.getInt();
+//        int w = inputUtils.getInt();
+//        int[] profits = inputUtils.getArr();
+//        int[] capital = inputUtils.getArr();
+        int maximizedCapital = findMaximizedCapital_review(2, 0, new int[]{1,2,3},new int[]{0,1,1});
         System.out.println(maximizedCapital);
+    }
+
+
+    public static int findMaximizedCapital_review(int k, int w, int[] profits, int[] capital) {
+        PriorityQueue<int[]> pq = new PriorityQueue<int[]>( (a,b) -> {
+            return b[0] - a[0];
+        });
+
+        int[][] collection = new int[profits.length][2];
+        for (int i = 0; i < profits.length; i++) {
+            collection[i][0] = profits[i];
+            collection[i][1] = capital[i];
+        }
+        //要对资本进行排序 从小到大
+        Arrays.sort(collection,(a,b) -> a[1] - b[1]);
+        //用index表示数组下标索引，用k表示每一次循环的次数（k在题中是能同时参与的最多个项目）
+        //i循环多少次就是参与了多少个项目，因为每次循环里面的while会把所有符合的项目加入pq,利用堆的特性取出每一轮最大的利润
+        //取出来i次，所以是对i<k循环
+        int index = 0;
+        for (int i = 0; i < k; i++) {
+            while (index < profits.length && collection[index][1] <= w){
+                pq.add(collection[index++]);
+            }
+            if(!pq.isEmpty()){
+                w += pq.poll()[0];
+            }else {
+                break;
+            }
+        }
+        return w;
     }
 
 }
