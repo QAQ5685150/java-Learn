@@ -17,7 +17,7 @@ public class unrecursion {
 
     public static void main(String[] args) {
         TreeNode test = TreeNode.getTestData();
-        pro(test);
+        pro_recursion(test);
         System.out.println();
         mid(test);
         System.out.println();
@@ -77,4 +77,41 @@ public class unrecursion {
 
     }
 
+    public static void pro_recursion(TreeNode treeNode){
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(treeNode);
+        while (!stack.isEmpty()){
+            //首先压入根节点，每次弹出栈中第一个节点，它的左右孩子不为空就压入栈
+            //前序是根 左 右的顺序，先压右再压左，每次弹出的都是根节点左孩子一直往下，就是根 左的效果
+            //右节点保存在栈中，随后面弹出，就是把状态保存在栈里等到要处理再使用，达到这种效果
+            TreeNode pop = stack.pop();
+            System.out.print(pop.val + " ");
+            if(pop.right != null){
+                stack.push(pop.right);
+            }
+            if(pop.left != null){
+                stack.push(pop.left);
+            }
+        }
+    }
+
+    public static void mid_recursion(TreeNode treeNode){
+        Stack<TreeNode> stack = new Stack<>();
+        while (treeNode != null || !stack.isEmpty()){
+            while (treeNode != null){
+                stack.push(treeNode);
+                treeNode = treeNode.left;
+            }
+//            TreeNode pop = stack.pop();
+//            System.out.println(pop.val);
+//            if(pop.right != null){
+//                stack.push(pop.right);
+//            }
+            if(!stack.isEmpty()){
+                treeNode = stack.pop();
+                System.out.print(treeNode.val + " ");
+                treeNode = treeNode.right;
+            }
+        }
+    }
 }

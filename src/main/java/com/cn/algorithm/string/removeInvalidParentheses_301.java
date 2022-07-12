@@ -22,13 +22,13 @@ public class removeInvalidParentheses_301 {
      * 输出：["(())()","()()()"]
     **/
     public static void main(String[] args) {
-
+        String test = "()())()";
+        removeInvalidParentheses(test);
     }
 
     public static List<String> removeInvalidParentheses(String s) {
         List<String> ans = new ArrayList<String>();
         Set<String> currSet = new HashSet<String>();
-
         currSet.add(s);
         while (true) {
             for (String str : currSet) {
@@ -57,7 +57,6 @@ public class removeInvalidParentheses_301 {
     private static boolean isValid(String str) {
         char[] ss = str.toCharArray();
         int count = 0;
-
         for (char c : ss) {
             if (c == '(') {
                 count++;
@@ -68,7 +67,6 @@ public class removeInvalidParentheses_301 {
                 }
             }
         }
-
         return count == 0;
     }
 }

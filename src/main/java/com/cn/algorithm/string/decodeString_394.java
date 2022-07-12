@@ -12,7 +12,7 @@ public class decodeString_394 {
     public static void main(String[] args) {
         String test1 = "3[a]2[bc]";
         String test2 = "3[a2[c]]";
-        System.out.println(decodeString(test2));
+        System.out.println(decodeString_review(test2));
     }
 
     public static String decodeString(String s) {
@@ -43,6 +43,34 @@ public class decodeString_394 {
                     ans.append(sb);
                 }
                 sb = ans;//遇到']'后让里层等于ans括号内的倍数字符串，然后再遇到'['时字符栈就会保存到字符栈中，多重嵌套。
+            }
+        }
+        return sb.toString();
+    }
+
+
+    public static String decodeString_review(String s) {
+        Stack<Integer> numStack = new Stack<>();
+        Stack<StringBuilder> stringStack = new Stack<>();
+        int num = 0;
+        StringBuilder sb = new StringBuilder();
+        for (char c : s.toCharArray()) {
+            if(Character.isDigit(c)){
+                num = num * 10 + (c - '0');
+            }else if(c == '['){
+                numStack.push(num);
+                num = 0;
+                stringStack.push(sb);
+                sb = new StringBuilder();
+            }else if(Character.isAlphabetic(c)){
+                sb.append(c);
+            }else {
+                StringBuilder tmpString = stringStack.pop();
+                Integer tmpNum = numStack.pop();
+                for (int i = 0; i < tmpNum; i++) {
+                    tmpString.append(sb);
+                }
+                sb = tmpString;
             }
         }
         return sb.toString();

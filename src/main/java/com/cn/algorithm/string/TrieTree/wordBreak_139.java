@@ -1,4 +1,4 @@
-package com.cn.algorithm.string;
+package com.cn.algorithm.string.TrieTree;
 
 import java.util.*;
 

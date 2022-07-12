@@ -17,10 +17,6 @@ public class permute_46 {
 
     static List<List<Integer>> res = new ArrayList<>();
     public static List<List<Integer>> permute(int[] nums) {
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int num : nums) {
-            list.add(num);
-        }
         process(nums,0);
         return res;
     }
@@ -34,6 +30,13 @@ public class permute_46 {
             res.add(list);
             return;
         }
+        //(i,j)
+        //0 0 - 1 1 - 2 2  --> 1 2 3
+        //    - 1 2 - 2 2  --> 1 3 2
+        //0 1 - 1 1 - 2 2  --> 2 1 3
+        //    - 1 2 - 2 2  --> 2 3 1
+        //0 2 - 1 1 - 2 2  --> 3 2 1
+        //    - 1 2 - 2 2  --> 3 1 2
         for(int j = i;j < nums.length;j++){
             swap(nums,i,j);
             process(nums,i+1);
