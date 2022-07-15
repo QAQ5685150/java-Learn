@@ -1,4 +1,4 @@
-package com.cn.algorithm.dfs;
+package com.cn.algorithm.search.dfs;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

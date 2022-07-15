@@ -1,6 +1,5 @@
 package com.cn.algorithm.array;
 
-import java.sql.Array;
 import java.util.*;
 
 /**

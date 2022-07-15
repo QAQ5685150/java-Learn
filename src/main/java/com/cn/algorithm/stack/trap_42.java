@@ -1,5 +1,6 @@
-package com.cn.algorithm.array;
+package com.cn.algorithm.stack;
 
+import java.util.Arrays;
 import java.util.Stack;
 
 /**
@@ -14,6 +15,7 @@ public class trap_42 {
         int[] test = new int[]{0,1,0,2,1,0,1,3,2,1,2,1};
         System.out.println(trap(test));
         //System.out.println(trap2(test));
+        System.out.println(trap_review(test));
     }
 
     /**
@@ -28,11 +30,14 @@ public class trap_42 {
         for(int i = 0;i < height.length;i++){
             while (!stack.isEmpty() && height[i] > height[stack.peek()] ) {
                 int top = stack.pop();
+                //因为要peek，先检查栈中是否还有数据，没有就退出
                 if (stack.isEmpty()) {
                     break;
                 }
+                //当发生后面的数大于前数的情况，说明产生了“水坑”，拿到数据计算面积，栈用来保存这些数据
                 int leftIndex = stack.peek();
-                int curWidth = i - leftIndex - 1;
+                int curWidth = i - leftIndex - 1;//当前宽度
+                //当前长度，左边右边最小的那个减去中间可以装多少的计算量，
                 int curHeight = Math.min(height[leftIndex],height[i]) - height[top];
                 ans += curHeight * curWidth;
             }
@@ -69,5 +74,27 @@ public class trap_42 {
             }
         }
         return ans;
+    }
+
+    //单调栈
+    //[0,1,0,2,1,0,1,3,2,1,2,1]
+    public static int trap_review(int[] height){
+        int len = height.length;
+        Stack<Integer> stack = new Stack<>();
+        int sum = 0;
+        for (int i = 0; i < len; i++) {
+            while (!stack.isEmpty() && height[stack.peek()] < height[i]){
+                Integer pop = stack.pop();
+                if(stack.isEmpty()){
+                    break;
+                }
+                Integer leftIndex = stack.peek();
+                int high = Math.min(height[i],height[leftIndex]) - height[pop];
+                int width = i - leftIndex - 1;
+                sum += high * width;
+            }
+            stack.push(i);
+        }
+        return sum;
     }
 }

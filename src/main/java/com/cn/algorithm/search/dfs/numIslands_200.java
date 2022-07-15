@@ -1,8 +1,8 @@
-package com.cn.algorithm.dfs;
+package com.cn.algorithm.search.dfs;
 
 /**
  * @Author: Linxx
- * @Package: com.cn.algorithm.dfs
+ * @Package: com.cn.algorithm.search.dfs
  * @Time: 2022-07-08 11:19
  **/
 public class numIslands_200 {

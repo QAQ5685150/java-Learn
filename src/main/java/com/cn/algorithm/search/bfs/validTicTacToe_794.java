@@ -1,4 +1,4 @@
-package com.cn.algorithm.bfs;
+package com.cn.algorithm.search.bfs;
 
 /**
  * @class: validTicTacToe_794
