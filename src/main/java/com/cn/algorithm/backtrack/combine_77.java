@@ -21,9 +21,7 @@ public class combine_77 {
             }
             System.out.println();
         }
-
     }
-
 
     public static List<List<Integer>> combine(int n, int k) {
         List<List<Integer>> list = new ArrayList<>();
@@ -37,7 +35,6 @@ public class combine_77 {
             list.add(new ArrayList<>(arr));
             return;
         }
-
         for(int j = i;j <= n;j++){
             arr.addLast(j);
             process(list,arr,n,k,j + 1);//index变化位传入for循环的参数j,进入循环以后，选取下一个位置的数字放入arr，就不会产生重复数
@@ -71,6 +68,5 @@ public class combine_77 {
             _process(arr,list,i + 1,n,k);
             list.removeLast();
         }
-
     }
 }
