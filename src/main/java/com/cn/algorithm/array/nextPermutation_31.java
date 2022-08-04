@@ -51,4 +51,14 @@ public class nextPermutation_31 {
         nums[i] = nums[j];
         nums[j] = tmp;
     }
+
+    /**
+     * 下一个排列
+     * @param nums
+     */
+    public static void nextPermutation2(int[] nums) {
+
+
+
+    }
 }

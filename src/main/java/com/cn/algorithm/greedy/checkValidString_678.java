@@ -1,5 +1,8 @@
 package com.cn.algorithm.greedy;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 类名:checkValidString_678
  * 描述:TODO
@@ -18,9 +21,29 @@ public class checkValidString_678 {
      * 一个空字符串也被视为有效字符串。
      **/
     public static void main(String[] args) {
-        String test = "(((*))))";
-        System.out.println(checkValidString(test));
-        System.out.println(checkValidString1(test));
+//        String test = "(((*))))";
+//        System.out.println(checkValidString(test));
+//        System.out.println(checkValidString1(test));
+        for (int i : twoSum(new int[]{3,2,4}, 6)) {
+            System.out.print(i + " ");
+        }
+    }
+
+    public static int[] twoSum (int[] numbers, int target) {
+        // write code here
+        Map<Integer,Integer> map = new HashMap<>();
+        int[] res = new int[2];
+        for(int i = 0; i < numbers.length; i++){
+            map.put(numbers[i], i + 1);
+        }
+        for(int i = 0; i < numbers.length; i++){
+            if(map.containsKey(target - numbers[i])){
+                res[0] = i + 1;
+                res[1] = map.get(target - numbers[i]);
+                break;
+            }
+        }
+        return res;
     }
 
     /**

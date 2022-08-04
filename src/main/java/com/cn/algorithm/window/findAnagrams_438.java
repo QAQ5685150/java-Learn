@@ -131,4 +131,31 @@ public class findAnagrams_438 {
         return ans;
     }
 
+
+    public static List<Integer> findAnagrams3(String s, String p) {
+        List<Integer> res = new ArrayList<>();
+        char[] cs = s.toCharArray();
+        char[] cp = p.toCharArray();
+        int[] w1 = new int[26];
+        int[] w2 = new int[26];
+
+        if(cp.length > cs.length) return new ArrayList<>();
+
+        for (int i = 0; i < cp.length; i++) {
+            w1[cs[i] - 'a']++;
+            w2[cp[i] - 'a']++;
+        }
+        if(Arrays.equals(w1,w2)) res.add(0);
+
+        for (int i = cp.length; i < cs.length; i++) {
+            w1[cs[i] - 'a']++;
+            w1[cs[i - cp.length] - 'a']--;
+
+            if(Arrays.equals(w1,w2)){
+                res.add(i - cp.length + 1);
+            }
+        }
+        return res;
+    }
+
 }
