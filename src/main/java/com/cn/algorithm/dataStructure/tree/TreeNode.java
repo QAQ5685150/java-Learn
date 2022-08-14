@@ -1,5 +1,6 @@
 package com.cn.algorithm.dataStructure.tree;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -10,7 +11,7 @@ import java.util.Queue;
  * 姓名:南风
  * 日期:2021-09-28 11:42
  **/
-public class TreeNode {
+public class TreeNode implements Serializable {
 
     public int val;
     public TreeNode left;
@@ -41,47 +42,61 @@ public class TreeNode {
                         new TreeNode(4)));
     }
 
-    /**
-    *功能描述:
-    *@param data
-    *@return TreeNode
-    **/
-    public static TreeNode insertData(String data){
-        String[] split = data.split("!");
-        Queue<String> queue = new LinkedList<>();
-        for (String i : split) {
-            queue.add(i);
-        }
-        return helper(queue);
-    }
-
-    private static TreeNode helper(Queue<String> queue){
-        String poll = queue.poll();
-        if("#".equals(poll)){
-            return null;
-        }
-        TreeNode node = new TreeNode(Integer.valueOf(poll));
-        node.left = helper(queue);
-        node.right = helper(queue);
-        return node;
-    }
-
     public static void main(String[] args) {
-        TreeNode node = TreeNode.insertData("21!7!1!3!#!#!3!#!#!1!#!#!14!2!#!#!2!#!#!");
-        System.out.println(node);
+        TreeNode node = TreeNode.getTestData();
+        String serialize = node.serialize(node);
+        System.out.println(serialize);
+        TreeNode deserialize = node.deserialize(serialize);
+        System.out.println(node.toStringHelper(deserialize));
     }
 
+    //treeNode toString override
     @Override
     public String toString() {
-        if(this == null){
-            return null;
+        return toStringHelper(this);
+    }
+
+    private String toStringHelper(TreeNode root){
+        if (root == null){
+            return "null";
         }
         return "TreeNode{" +
                 "val=" + val +
-                ", left=" + left.toString() +
-                ", right=" + right.toString() +
+                ", left=" + toStringHelper(root.left) +
+                ", right=" + toStringHelper(root.right) +
                 '}';
     }
+
+    public String serialize(TreeNode root){
+        if(root == null){
+            return "#!";
+        }
+        String val = new String(root.val + "!");
+        val += serialize(root.left);
+        val += serialize(root.right);
+        return val;
+    }
+
+    public TreeNode deserialize(String sequence){
+        String[] split = sequence.split("!");
+        Queue<String> queue = new LinkedList<>();
+        for (String s : split) {
+            queue.add(s);
+        }
+        return deserializeHelper(queue);
+    }
+
+    public TreeNode deserializeHelper(Queue<String> queue){
+        String poll = queue.poll();
+        if ("#".equals(poll)){
+            return null;
+        }
+        TreeNode root = new TreeNode(Integer.parseInt(poll));
+        root.left = deserializeHelper(queue);
+        root.right = deserializeHelper(queue);
+        return root;
+    }
+
 }
 
 
