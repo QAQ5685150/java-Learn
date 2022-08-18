@@ -5,7 +5,7 @@ import com.cn.algorithm.util.printUtils;
 /**
  * @Auther: @小脑斧不可爱
  * @Time: 2022-02-07 11:34
- * @Description: 快排
+ * @Description: 快排 利用递归选数到最终位置上，从上到下递归排序
  * @Project_name: java-learn
  */
 public class quickSort {
@@ -54,7 +54,7 @@ public class quickSort {
 
     public static void main(String[] args) {
         int[] test = new int[]{9,4,6,5,1,3,2,7,6,4};
-        quickSort2(test,0,test.length - 1);
+        quickSort_review(test,0,test.length - 1);
         printUtils.printArray(test);
     }
 
@@ -105,5 +105,24 @@ public class quickSort {
         arr[j] = tmp;
     }
 
-
+    public static void quickSort_review(int[] arr,int low, int high){
+        if(low > high) return;
+        int start = arr[low];
+        int i = low;
+        int j = high;
+        while (i < j){
+            //右指针先动 左指针再动
+            while (arr[j] >= start && i < j){
+                j--;
+            }
+            while (arr[i] <= start && i < j){
+                i++;
+            }
+            if(i < j) swap(arr,i,j);
+        }
+        arr[low] = arr[i];
+        arr[i] = start;
+        quickSort_review(arr,0,j-1);
+        quickSort_review(arr,j + 1,high);
+    }
 }
