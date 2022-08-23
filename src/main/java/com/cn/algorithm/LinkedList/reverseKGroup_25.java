@@ -4,6 +4,7 @@ import com.cn.algorithm.dataStructure.LinkedList.ListNode;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Stack;
 
 /**
@@ -18,8 +19,12 @@ public class reverseKGroup_25 {
         ArrayList<Integer> arrayList = new ArrayList<>();
         Collections.addAll(arrayList, 1, 2, 3, 4, 5, 6, 7, 8);
 
+        ArrayList<Integer> arrayList1 = new ArrayList<>();
+        Collections.addAll(arrayList1, 1, 2, 3, 4, 5, 6, 7, 8);
+
         ListNode node = ListNode.getNode(arrayList);
         ListNode p = node;
+        ListNode p1 = ListNode.getNode(arrayList1);
         ListNode.printList(node);
         System.out.println();
 
@@ -30,6 +35,10 @@ public class reverseKGroup_25 {
 
         ListNode listNode = reverseKGroup1(p, 4);
         ListNode.printList(listNode);
+        System.out.println();
+
+        ListNode listNode1 = reverseKGroup2(p1,4);
+        ListNode.printList(listNode1);
         System.out.println();
     }
 
@@ -97,6 +106,27 @@ public class reverseKGroup_25 {
             pre = cur;
         }
     }
-
+//1 2 3 4 5 6
+    public static ListNode reverseKGroup2(ListNode node, int k){
+        ListNode tail = node;
+        for (int i = 0; i < k; i++) {
+            if(tail == null){
+                return node;
+            }
+            tail = tail.next;
+        }
+        ListNode pre = null;
+        ListNode cur = node;
+        while (cur != tail){
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        node.next = reverseKGroup2(tail, k);
+        return pre;
+    }
 
 }
+
+
