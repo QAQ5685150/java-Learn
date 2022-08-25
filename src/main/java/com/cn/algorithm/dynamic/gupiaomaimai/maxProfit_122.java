@@ -1,4 +1,4 @@
-package com.cn.algorithm.gupiaomaimai;
+package com.cn.algorithm.dynamic.gupiaomaimai;
 
 /**
  * @Auther: @Ð¡ÄÔ¸«²»¿É°®

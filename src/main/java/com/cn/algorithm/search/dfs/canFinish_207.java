@@ -1,6 +1,10 @@
 package com.cn.algorithm.search.dfs;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -12,30 +16,35 @@ import java.util.List;
 public class canFinish_207 {
 
     public static void main(String[] args) {
-        int[][] test = new int[][]{{1,4},{2,4},{3,1},{3,2}};
+        int[][] test = new int[][]{{1, 4}, {2, 4}, {3, 1}, {3, 2}};
+        int[][] test1 = new int[][]{{1,0}, {0, 1}};
         System.out.println(canFinish2(5, test));
+        System.out.println(canFinish_re(5,test));
+        boolean b = canFinish2(2, test1);
+        System.out.println(b);
+        System.out.println(canFinish_re(2, test1));
     }
 
     //dfs遍历模板，不能判断是否有环存在
     public static boolean canFinish(int numCourses, int[][] prerequisites) {
         int len = prerequisites.length;
         boolean[] visited = new boolean[numCourses];
-        for(int i = 0;i < len; i++){
-            if(!visited[i]){
-                dfs(prerequisites,visited,i);
-            }else {
+        for (int i = 0; i < len; i++) {
+            if (!visited[i]) {
+                dfs(prerequisites, visited, i);
+            } else {
                 return false;
             }
         }
         return true;
     }
 
-    public static boolean dfs(int[][] prerequisites, boolean[] visited, int index){
+    public static boolean dfs(int[][] prerequisites, boolean[] visited, int index) {
         int[] cur = prerequisites[index];
-        for(int i = 0; i < cur.length; i++){
-            if(!visited[cur[i]]){
+        for (int i = 0; i < cur.length; i++) {
+            if (!visited[cur[i]]) {
                 visited[cur[i]] = true;
-            }else{
+            } else {
                 return false;
             }
         }
@@ -44,6 +53,7 @@ public class canFinish_207 {
 
     /**
      * 对于数据中有[1,4][4,1]返回false，但是无法判断图中存在环的情况
+     *
      * @param numCourses
      * @param prerequisites
      * @return
@@ -51,14 +61,14 @@ public class canFinish_207 {
     public static boolean canFinish2(int numCourses, int[][] prerequisites) {
         int len = prerequisites.length;
         boolean[][] visited = new boolean[numCourses][numCourses];
-        for(int i = 0;i < len; i++){
+        for (int i = 0; i < len; i++) {
             int l = prerequisites[i][0];
             int r = prerequisites[i][1];
             visited[l][r] = true;
         }
         for (int i = 0; i < visited.length; i++) {
             for (int j = 0; j < visited.length; j++) {
-                if(i != j && visited[i][j] == true && visited[j][i] == true){
+                if (i != j && visited[i][j] == true && visited[j][i] == true) {
                     return false;
                 }
             }
@@ -77,20 +87,48 @@ public class canFinish_207 {
         for (int i = 0; i < len; i++) {
             edges.get(prerequisites[i][1]).add(prerequisites[i][0]);
         }
-        for(int i = 0;i < len; i++){
-            if(!dfs_dag(edges,visited,i)) return false;
+        for (int i = 0; i < len; i++) {
+            if (!dfs_dag(edges, visited, i)) return false;
         }
         return true;
     }
 
     private static boolean dfs_dag(List<List<Integer>> edges, int[] visited, int i) {
-        if(visited[i] == 1) return false;
-        if(visited[i] == -1) return true;
+        if (visited[i] == 1) return false;
+        if (visited[i] == -1) return true;
         visited[i] = 1;
         for (int j = 0; j < edges.get(i).size(); j++) {
-            if(!dfs_dag(edges,visited,edges.get(i).get(j))) return false;
+            if (!dfs_dag(edges, visited, edges.get(i).get(j))) return false;
         }
         visited[i] = -1;
+        return true;
+    }
+
+
+    public static boolean canFinish_re(int numCourses, int[][] prerequisites) {
+        List<List<Integer>> list = new ArrayList<>();
+        for (int i = 0; i < numCourses; i++) {
+            list.add(new ArrayList<>());
+        }
+        for (int i = 0; i < prerequisites.length; i++) {
+            list.get(prerequisites[i][1]).add(prerequisites[i][0]);
+        }
+        int[] visited = new int[numCourses];
+        for (int i = 0; i < list.size(); i++) {
+            boolean b = dfs_re(list, visited, i);
+            if(!b) return false;
+        }
+        return true;
+    }
+
+    public static boolean dfs_re(List<List<Integer>> list, int[] visited, int cur) {
+        if (visited[cur] == 1) return false;
+        if (visited[cur] == -1) return true;
+        visited[cur] = 1;
+        for (int i = 0; i < list.get(cur).size(); i++) {
+            if(!dfs_re(list,visited,list.get(cur).get(i))) return false;
+        }
+        visited[cur] = -1;
         return true;
     }
 }
