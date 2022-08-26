@@ -1,5 +1,7 @@
 package com.cn.algorithm.array;
 
+import com.cn.algorithm.util.printUtils;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Stack;
@@ -17,6 +19,10 @@ public class asteroidCollision_735 {
         for (int i : asteroidCollision(test)) {
             System.out.print(i + " ");
         }
+        System.out.println();
+        int[] test1 = new int[]{5,10,-5,20,31,-13};
+        int[] reverse = reverse(test1, 0, test1.length - 1);
+        printUtils.printArray(reverse);
         //异或运算符交换两个数
 //        int a = 40;
 //        int b = 50;
@@ -81,5 +87,16 @@ public class asteroidCollision_735 {
         int[] ans = new int[sz];
         while (!d.isEmpty()) ans[--sz] = d.pollLast();
         return ans;
+    }
+
+    public static int[] reverse(int[] arr, int i, int j){
+        while (i < j){
+            arr[i] = arr[i] ^ arr[j];
+            arr[j] = arr[i] ^ arr[j];
+            arr[i] = arr[i] ^ arr[j];
+            i++;
+            j--;
+        }
+        return arr;
     }
 }

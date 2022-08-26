@@ -5,29 +5,31 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @Auther: @Ð¡ÄÔ¸«²»¿É°®
+ * @Auther: @Ð¡ï¿½Ô¸ï¿½ï¿½ï¿½ï¿½É°ï¿½
  * @Time: 2022-01-01 22:34
- * @Description: ´òÓ¡¹¤¾ßÀà
+ * @Description: ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  * @Project_name: java-learn
  */
 public class printUtils {
 
     /**
-     * int[]Êý×é´òÓ¡
+     * int[]ï¿½ï¿½ï¿½ï¿½ï¿½Ó¡
      * @param arr
      */
     public static void printArray(int[] arr){
+        System.out.println();
         for (int i : arr) {
             System.out.print(i + " ");
         }
     }
 
     /**
-     * List<>´òÓ¡
+     * List<>ï¿½ï¿½Ó¡
      * @param list
      * @param <T>
      */
     public static<T> void printArray(List<T> list){
+        System.out.println();
         for (T t : list) {
             System.out.print(t + " ");
         }
@@ -35,10 +37,11 @@ public class printUtils {
     }
 
     /**
-     * ¶þÎ¬Êý×é´òÓ¡
+     * ï¿½ï¿½Î¬ï¿½ï¿½ï¿½ï¿½ï¿½Ó¡
      * @param arr
      */
     public static void printArray(int[][] arr){
+        System.out.println();
         for (int[] ints : arr) {
             for (int anInt : ints) {
                 System.out.print(anInt + " ");
@@ -48,12 +51,13 @@ public class printUtils {
     }
 
     /**
-     * Map´òÓ¡
+     * Mapï¿½ï¿½Ó¡
      * @param map
      * @param <K>
      * @param <V>
      */
     public static<K,V> void printMap(Map<K,V> map){
+        System.out.println();
         Iterator<Map.Entry<K, V>> iterator = map.entrySet().iterator();
         while (iterator.hasNext()){
             Map.Entry<K, V> next = iterator.next();
