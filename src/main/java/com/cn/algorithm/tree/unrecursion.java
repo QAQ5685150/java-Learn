@@ -22,9 +22,6 @@ public class unrecursion {
         mid(test);
         System.out.println();
 
-
-        TreeNode node = TreeNode.insertData("");
-        pro(node);
     }
 
     public static List<Integer> pro(TreeNode treeNode){

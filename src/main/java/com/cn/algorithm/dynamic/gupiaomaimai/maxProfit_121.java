@@ -9,8 +9,9 @@ package com.cn.algorithm.dynamic.gupiaomaimai;
 public class maxProfit_121 {
 
     public static void main(String[] args) {
-        int[] test = new int[]{1,2,3,4,5};
+        int[] test = new int[]{7,1,5,3,6,4};
         System.out.println(maxProfit_review(test));
+        System.out.println(maxProfit_dp(test));
     }
 
     public static int maxProfit(int[] prices) {
@@ -36,5 +37,16 @@ public class maxProfit_121 {
             res = Math.max(res,cur - min);
         }
         return res;
+    }
+
+    public static int maxProfit_dp(int[] prices) {
+        int len = prices.length;
+        int[][] profit = new int[len][2];
+        profit[0][1] = -prices[0];
+        for(int i = 1; i < len; i++){
+            profit[i][0] = Math.max(profit[i - 1][1] + prices[i], profit[i - 1][0]);
+            profit[i][1] = Math.max( -prices[i], profit[i - 1][1]);
+        }
+        return profit[len - 1][0];
     }
 }
