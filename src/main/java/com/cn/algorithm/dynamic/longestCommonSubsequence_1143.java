@@ -4,7 +4,7 @@ import com.cn.algorithm.util.printUtils;
 
 /**
  * 类名: longestCommonSubsequence_1143
- * 描述: TODO
+ * 描述: 1143. 最长公共子序列
  * 姓名: @author南风
  * 日期: 2022-02-23 17:33
  **/
@@ -16,7 +16,7 @@ public class longestCommonSubsequence_1143 {
     }
 
     /**
-    *功能描述:TODO
+    *功能描述:1143. 最长公共子序列
     *@param text1
     *@param text2
     *@return int
