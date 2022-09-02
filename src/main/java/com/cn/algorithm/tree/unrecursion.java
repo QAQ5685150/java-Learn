@@ -55,13 +55,6 @@ public class unrecursion {
                 System.out.print(dummy.val + " ");
                 dummy = dummy.right;
             }
-//            dummy = stack.pop();
-//            System.out.print(dummy.val + " ");
-//            if(dummy.right != null){
-//                dummy = dummy.right;
-//            }else {
-//                dummy = null;
-//            }
         }
     }
 
