@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
-    <file url="file://$PROJECT_DIR$/src/main/java/com/cn/algorithm/array/leastBricks_554.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/cn/algorithm/sort/n2/insertSort.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/cn/algorithm/sort/n2/selectSort.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/cn/algorithm/sort/nlogn/heapSort.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/cn/algorithm/util/printUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/cn/Algorithm/array/leastBricks_554.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/cn/Algorithm/array/sort/n2/insertSort.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/cn/Algorithm/array/sort/n2/selectSort.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/cn/Algorithm/array/sort/nlogn/heapSort.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/cn/Algorithm/util/printUtils.java" charset="UTF-8" />
     <file url="PROJECT" charset="GBK" />
   </component>
 </project>
