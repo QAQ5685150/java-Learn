@@ -1,4 +1,4 @@
-package com.cn.Algorithm.string.kuohao;
+package com.cn.Algorithm.algoritmBook.daily.september;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,7 +10,7 @@ import java.util.Stack;
  * @Time: 2022-09-06 14:00
  * @Description: ¾©¶« 09-04 ±ÊÊÔ
  **/
-public class JD0904 {
+public class JD0903_review {
 
     public static void main(String[] args) {
         //demo03();
