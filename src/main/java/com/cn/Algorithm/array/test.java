@@ -18,10 +18,6 @@ public class test {
     public static void test1(int[][] values){
         PriorityQueue<int[]> left = new PriorityQueue<>( (a,b) -> a[0] - b[0]);
         PriorityQueue<int[]> right = new PriorityQueue<>((a,b) -> b[0] - a[0]);
-//        int l = 0;
-//        int r = values.length - 1;
-//        int total = 0;
-//        int days = 0;
 
         for (int i = 0; i < values.length; i++) {
             if(values[i][0] > values[i][1]){

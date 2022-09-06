@@ -57,6 +57,7 @@ public class nextPermutation_31 {
      * @param nums
      */
     public static void nextPermutation2(int[] nums) {
+        int n = nums.length - 2;
 
 
 
