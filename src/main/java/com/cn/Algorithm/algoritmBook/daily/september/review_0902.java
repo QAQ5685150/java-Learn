@@ -1,4 +1,4 @@
-package com.cn.Algorithm.algoritmBook.september;
+package com.cn.Algorithm.algoritmBook.daily.september;
 
 import com.cn.Algorithm.util.printUtils;
 

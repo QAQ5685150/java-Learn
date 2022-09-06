@@ -1,4 +1,4 @@
-package com.cn.Algorithm.algoritmBook.august;
+package com.cn.Algorithm.algoritmBook.daily.august;
 
 import com.cn.Algorithm.dataStructure.LinkedList.ListNode;
 
