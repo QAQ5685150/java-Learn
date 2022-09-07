@@ -1,5 +1,8 @@
 package com.cn.Algorithm.array;
 
+import com.cn.Algorithm.util.printUtils;
+
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Stack;
 
@@ -13,7 +16,7 @@ public class nextGreaterElement_496 {
 
     public static void main(String[] args) {
         int[] test1 = new int[]{4,1,2};
-        int[] test2 = new int[]{1,3,2,5};
+        int[] test2 = new int[]{1,3,4,2};
 //        int[] ints = nextGreaterElement(test1, test2);
 //        System.out.print("[");
 //        for (int i = 0; i < ints.length - 1; i++) {
@@ -21,8 +24,7 @@ public class nextGreaterElement_496 {
 //        }
 //        System.out.print(ints[ints.length - 1]);
 //        System.out.print("]");
-
-        System.out.println(nextGreaterElement1(test1, test2));
+        printUtils.printArray(nextGreaterElement2(test1, test2));
     }
 
     /**
@@ -68,5 +70,28 @@ public class nextGreaterElement_496 {
          }
          return ans;
      }
+    public static int[] nextGreaterElement2(int[] nums1, int[] nums2) {
+        int len1 = nums1.length;
+        int len2 = nums2.length;
+        int[] res = new int[len1];
+        Arrays.fill(res,-1);
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for (int i = 0; i < len1; i++) {
+            for (int j = 0; j < len2; j++) {
+                if(nums1[i] == nums2[j]){
+                    map.put(i,j);
+                }
+            }
+        }
 
+        for(int i = 0; i < len1; i++){
+            for(int j = map.get(i); j < len2; j++){
+                if(nums1[i] < nums2[j]){
+                    res[i] = nums2[j];
+                    break;
+                }
+            }
+        }
+        return res;
+    }
 }

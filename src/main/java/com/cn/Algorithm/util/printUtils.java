@@ -5,17 +5,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @Auther: @С�Ը����ɰ�
+ * @Auther: 小脑斧不可爱
  * @Time: 2022-01-01 22:34
- * @Description: ��ӡ������
+ * @Description: TODO
  * @Project_name: java-learn
  */
 public class printUtils {
 
-    /**
-     * int[]�����ӡ
-     * @param arr
-     */
     public static void printArray(int[] arr){
         System.out.println();
         for (int i : arr) {
@@ -23,11 +19,6 @@ public class printUtils {
         }
     }
 
-    /**
-     * List<>��ӡ
-     * @param list
-     * @param <T>
-     */
     public static<T> void printArray(List<T> list){
         System.out.println();
         for (T t : list) {
@@ -36,10 +27,6 @@ public class printUtils {
         System.out.println();
     }
 
-    /**
-     * ��ά�����ӡ
-     * @param arr
-     */
     public static void printArray(int[][] arr){
         System.out.println();
         for (int[] ints : arr) {
@@ -50,12 +37,6 @@ public class printUtils {
         }
     }
 
-    /**
-     * Map��ӡ
-     * @param map
-     * @param <K>
-     * @param <V>
-     */
     public static<K,V> void printMap(Map<K,V> map){
         System.out.println();
         Iterator<Map.Entry<K, V>> iterator = map.entrySet().iterator();

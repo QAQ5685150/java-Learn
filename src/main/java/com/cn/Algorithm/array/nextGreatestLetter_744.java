@@ -20,9 +20,9 @@ public class nextGreatestLetter_744 {
         if (target >= letters[letters.length - 1]) {
             return letters[0];
         }
-
+        int mid = 0;
         while (l < r){
-            int mid = (l + r) / 2;
+            mid = (l + r) / 2;
             int cur = letters[mid] - 'a';
             if(cur > tar){
                 r = mid;
