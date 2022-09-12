@@ -11,8 +11,8 @@ public class decodeString_394 {
 
     public static void main(String[] args) {
         String test1 = "3[a]2[bc]";
-        String test2 = "3[a2[c]]";
-        System.out.println(decodeString_review(test2));
+        String test2 = "3[a2[c]";
+        System.out.println(decodeString_review(test1));
     }
 
     public static String decodeString(String s) {
@@ -30,7 +30,7 @@ public class decodeString_394 {
                 mul = mul * 10 + (chars[i] - '0');
             }else if(chars[i] == '['){
                 //当有多层嵌套括号时，字符栈保存里层字符，再次遇到']'时会从里到外递归出多重括号的效果
-                ansSB.push(sb);
+                ansSB.push(sb);//从上往下会走这边，从下往上多次括号上一次的也会保存在栈里
                 multi.push(mul);
                 mul = 0;//遇到'['说明数字结束，清空
                 sb = new StringBuilder();
