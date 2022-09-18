@@ -85,4 +85,39 @@ public class mergeSort {
             arr[l + i] = help[i];
         }
     }
+    static int num = 0;
+    public static int reversePairs(int[] nums) {
+        merge(nums,0,nums.length - 1);
+        return num;
+    }
+
+    public static void merge(int[] nums, int l, int r){
+        if(l == r){
+            return ;
+        }
+        int mid = (l + (r - l) >> 1);
+        merge(nums,l,mid);
+        merge(nums,mid + 1,r);
+        mergeSort1(nums,l,mid,r);
+    }
+
+    public static void mergeSort1(int[] nums, int l,int mid, int r){
+        int[] help = new int[r - l + 1];
+        int index = 0;
+        int p1 = l;
+        int p2 = mid;
+        while (p1 <= mid && p2 <= r){
+            if(nums[p1] > nums[p2]) num++;
+            help[index++] = nums[p1] > nums[p2] ? nums[p1++] : nums[p2++];
+        }
+        while (p1 != mid){
+            help[index++] = nums[p1++];
+        }
+        while (p2 != r){
+            help[index++] = nums[p2++];
+        }
+        for (int i = 0; i < help.length; i++) {
+            help[i + l] = help[i];
+        }
+    }
 }
