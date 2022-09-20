@@ -10,7 +10,14 @@
 - 归并
 - 堆排序
 
-
+#### leetcode刷题
+- 数组
+- 链表
+- 回溯
+- 动态规划
+- 数学
+- 字符串
+- 二叉树
 
 ### 后端知识框架
 
@@ -19,15 +26,19 @@
 #### Java Demo
 
 1. String类 jvm小实验
-2. 日期demo
-3. 输入输出流demo
-4. 反射、代理demo
-5. 流处理API demo
-6. Swing简单窗口开发
+2. Data日期
+3. 输入输出流
+4. 反射、代理
+5. 接口、继承
+6. 枚举、注释
+7. 流处理API
+8. java异常体系
+9. jvm demo
+10. Swing简单窗口开发
 
 #### JUC DEMO
 
-1. AQS Lock
+1. AQS & Lock
 2. Thread、Runnable、ThreadPool
 3. ReentrantLock、CountDownLatch、ForkJoin
 4. BlockQueue
@@ -44,6 +55,7 @@
 4. 适配器模式
 5. 桥接模式
 6. 观察者模式
+7. 代理模式
 
 
 
@@ -51,4 +63,4 @@
 
 ![image-20220913172604351]([image-20220913172604351.png (553×342) (raw.githubusercontent.com)](https://raw.githubusercontent.com/QAQ5685150/java-Learn/master/src/main/resources/picture/image-20220913172604351.png))
 
-loading……
+to be continue……
