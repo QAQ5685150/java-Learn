@@ -2,11 +2,8 @@
 
 ### leetcode & 竞赛 & 笔试算法总结
 
-<<<<<<< HEAD
-![image-20220913172153638]([image-20220913172153638.png (750×392) (raw.githubusercontent.com)](https://raw.githubusercontent.com/QAQ5685150/java-Learn/master/src/main/resources/picture/image-20220913172153638.png))
-=======
+
 ![image-20220913172153638](https://raw.githubusercontent.com/QAQ5685150/java-Learn/master/src/main/resources/picture/image-20220913172153638.png)
->>>>>>> 70d396adf7a2edcaa334f65670932303405a9a94
 
 #### 经典排序算法
 
