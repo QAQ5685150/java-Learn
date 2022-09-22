@@ -22,7 +22,7 @@
 
 ### 后端知识框架
 
-![image-20220913172421694]([image-20220913172421694.png (654×398) (raw.githubusercontent.com)](https://raw.githubusercontent.com/QAQ5685150/java-Learn/master/src/main/resources/picture/image-20220913172421694.png))
+![image-20220913172421694](https://raw.githubusercontent.com/QAQ5685150/java-Learn/master/src/main/resources/picture/image-20220913172421694.png)
 
 #### Java Demo
 
@@ -62,6 +62,6 @@
 
 ### 大数据相关
 
-![image-20220913172604351]([image-20220913172604351.png (553×342) (raw.githubusercontent.com)](https://raw.githubusercontent.com/QAQ5685150/java-Learn/master/src/main/resources/picture/image-20220913172604351.png))
+![image-20220913172604351](https://raw.githubusercontent.com/QAQ5685150/java-Learn/master/src/main/resources/picture/image-20220913172604351.png)
 
 to be continue……
