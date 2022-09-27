@@ -10,12 +10,13 @@ import java.util.List;
  * @Time: 2022-09-26 16:49
  * @Description: TODO
  **/
-public class EventManager {
 
-    enum types{
-        LISTENER1,
-        LISTENER2
-    }
+enum types{
+    LISTENER1,
+    LISTENER2
+}
+
+public class EventManager {
 
     public static HashMap<String, List<EventListener>> listenerHashMap = new HashMap<>();
 
@@ -29,10 +30,31 @@ public class EventManager {
         return listenerHashMap.get(type.toString()).add(eventListener);
     }
 
-    public void note(){
-        listenerHashMap.forEach( (k,v) -> {
+    public List<EventListener> describe(Enum<types> type){
+        return listenerHashMap.remove(type.toString());
+    }
 
+    public void notifyListener(Enum<types> type){
+        listenerHashMap.forEach( (k,v) -> {
+            if(k.equals(type.toString())){
+                for (EventListener eventListener : v) {
+                    eventListener.doEvent();
+                }
+            }
         });
     }
+
+    public void notifyAllListener(Enum<types> ... types){
+        for (Enum<types> type : types) {
+            listenerHashMap.forEach( (k,v) -> {
+                if(k.equals(type.toString())){
+                    for (EventListener eventListener : v) {
+                        eventListener.doEvent();
+                    }
+                }
+            });
+        }
+    }
+
 
 }

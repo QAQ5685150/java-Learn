@@ -36,7 +36,6 @@ public class generateParenthesis_22 {
             process(sb,n,left + 1, right);
             sb.deleteCharAt(sb.length() - 1);
         }
-
         if(right < left){
             sb.append(")");
             process(sb,n,left, right + 1);
