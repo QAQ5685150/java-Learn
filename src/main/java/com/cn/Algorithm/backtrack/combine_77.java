@@ -35,7 +35,7 @@ public class combine_77 {
         }
         for(int j = i;j <= n;j++){
             arr.addLast(j);
-            process(list,arr,n,k,i + 1);//j + 1 就是组合的效果，不会有重复数组
+            process(list,arr,n,k,i + 1);
             // i + 1就是排列的效果，因为每次进入下一次递归，是在i的进入点开始往下循环遍历的
             arr.removeLast();//回溯法最关键的一步，就是走到了叶子节点要返回了，把上一次加入的结果弹出，就“像是”回到了树状结构上一个节点位置
         }
