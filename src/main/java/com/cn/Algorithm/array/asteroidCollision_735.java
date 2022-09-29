@@ -23,7 +23,7 @@ public class asteroidCollision_735 {
         int[] test1 = new int[]{5,10,-5,20,31,-13};
         int[] reverse = reverse(test1, 0, test1.length - 1);
         printUtils.printArray(reverse);
-        //异或运算符交换两个数
+//        异或运算符交换两个数
 //        int a = 40;
 //        int b = 50;
 //        a = a ^ b;
