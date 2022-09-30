@@ -21,7 +21,7 @@ public class maxPathSum_124 {
         if(root == null){
             return 0;
         }
-        dfs(root);
+        System.out.println(dfs(root));
         return max;
     }
 
@@ -33,5 +33,22 @@ public class maxPathSum_124 {
         int right = Math.max(0,dfs(root.right));
         max = Math.max(max,left + right + root.val);
         return left + right + root.val;
+    }
+
+    static int res = Integer.MIN_VALUE;
+    public static int maxPathSum_review(TreeNode root) {
+        if(root == null) return 0;
+        process(root);
+        return res;
+    }
+
+    public static int process(TreeNode root){
+        if(root == null){
+            return 0;
+        }
+        int left = process(root.left);
+        int right = process(root.right);
+        max = Math.max(max,right + left + root.val);
+        return Math.max(left,right) + root.val;
     }
 }
