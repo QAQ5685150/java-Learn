@@ -16,7 +16,7 @@ public class asteroidCollision_735 {
 
     public static void main(String[] args) {
         int[] test = new int[]{5,10,-5,20,31,-13,-41,50,35,23,-14,-24,-60,23,25,27,68};
-        for (int i : asteroidCollision(test)) {
+        for (int i : asteroidCollision2(test)) {
             System.out.print(i + " ");
         }
         System.out.println();
@@ -72,6 +72,9 @@ public class asteroidCollision_735 {
      * @param ats
      * @return
      */
+    // 将这道题比喻成踢馆子，正方是武馆的人，坐镇武馆，负方是踢馆的人，专门来踢馆子
+    // 将栈作为武馆，正方的人在武馆里面（正方进栈），遇到负方的人，就要出来应战
+    // 负方的人只有把馆子里的人都踢赢了，才能进武馆
     public static int[] asteroidCollision2(int[] ats) {
         Deque<Integer> d = new ArrayDeque<>();
         for (int t : ats) {
