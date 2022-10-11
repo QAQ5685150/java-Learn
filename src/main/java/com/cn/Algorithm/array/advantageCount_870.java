@@ -9,10 +9,14 @@ import java.util.HashSet;
  * @Time: 2022-10-08 13:42
  * @Description: TODO
  **/
-public class advantageCount_890 {
+public class advantageCount_870 {
 
     public static void main(String[] args) {
-
+        int[] test = new int[]{2,7,11,15};
+        int[] test1 = new int[]{1,10,4,11};
+        for (int i : advantageCount_review(test, test1)) {
+            System.out.print(i + " ");
+        }
     }
 
     /**
@@ -45,7 +49,7 @@ public class advantageCount_890 {
      * @param nums2
      * @return
      */
-    public int[] advantageCount(int[] nums1, int[] nums2) {
+    public static int[] advantageCount(int[] nums1, int[] nums2) {
         int n = nums1.length;
         Integer[] idx = new Integer[n]; // nums2索引
         for (int i = 0; i < n; i++) idx[i] = i;
@@ -55,6 +59,25 @@ public class advantageCount_890 {
         for (int i : nums1) { // 遍历nums1
             if (i > nums2[idx[L]]) nums2[idx[L++]] = i; // 可以满足 nums1[i] > nums2[i]
             else nums2[idx[R--]] = i; //丢到数组最后
+        }
+        return nums2;
+    }
+
+//        nums1:[2,7,11,15]
+//        nums2:[1,10,4,11]
+//        idx:[0,2,1,3]
+    public static int[] advantageCount_review(int[] nums1, int[] nums2) {
+        int len = nums1.length;
+        Integer[] idx = new Integer[len];
+        for (int i = 0; i < len; i++) {
+            idx[i] = i;
+        }
+        Arrays.sort(nums1);
+        Arrays.sort(idx, (a,b) -> nums2[a] - nums2[b]);
+        int l = 0; int r = len - 1;
+        for (int i : nums1) {
+            if (i > nums2[l]) nums2[idx[l++]] = i;
+            else nums2[idx[r--]] = i;
         }
         return nums2;
     }

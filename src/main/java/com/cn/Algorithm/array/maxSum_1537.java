@@ -46,6 +46,39 @@ public class maxSum_1537 {
     public static void main(String[] args) {
         int[] test1 = new int[]{6,12,17,21,29,31};
         int[] test2 = new int[]{10,17,22,26,30,34};
-        System.out.println(maxSum(test1, test2));
+        System.out.println(maxSum_review(test1, test2));
+    }
+
+
+    public static int maxSum_review(int[] nums1, int[] nums2) {
+        int len1 = nums1.length;
+        int len2 = nums2.length;
+        long sum1 = 0;
+        long sum2 = 0;
+        long res = 0;
+        int i = 0;int j = 0;
+        while (i < len1 && j < len2){
+            if(nums1[i] < nums2[j]){
+                sum1 += nums1[i++];
+            }else if(nums1[i] > nums2[j]){
+                sum2 += nums2[j++];
+            }else {
+                res += Math.max(sum1, sum2);
+                res += nums1[i];
+                i++;
+                j++;
+                sum1 = 0;
+                sum2 = 0;
+            }
+        }
+        while (i < len1){
+            sum1 += nums1[i++];
+        }
+        while (j < len2){
+            sum2 += nums2[j++];
+        }
+        res += Math.max(sum1,sum2);
+        res %= mod;
+        return (int)res;
     }
 }
