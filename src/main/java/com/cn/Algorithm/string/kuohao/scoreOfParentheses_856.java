@@ -39,6 +39,27 @@ public class scoreOfParentheses_856 {
         }
     }
 
+    public static int __scoreOfParentheses_1(String s) {
+        if(s.length() == 2){
+            return 1;
+        }
+        int len = s.length();
+        int n = 0;
+        int deep = 0;
+        for (int i = 0; i < len; i++) {
+            deep += s.charAt(i) == '(' ? 1 : -1;
+            if(deep == 0){
+                n = i + 1;
+                break;
+            }
+        }
+        if(n == len){
+            return __scoreOfParentheses_1(s.substring(1,len - 1));
+        }else {
+            return __scoreOfParentheses_1(s.substring(0,n)) + __scoreOfParentheses_1(s.substring(n));
+        }
+    }
+
 // ((())())
 // s:1 2 3 3 2 4
 // i:      1 2 1
