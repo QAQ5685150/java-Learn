@@ -153,4 +153,26 @@ public class quickSort {
         quickSort_review(arr, j + 1, high);
     }
 
+    public static int leetcode_215(int[] arr, int k){
+        return qSelect(arr,0,arr.length - 1, k);
+    }
+
+    public static int qSelect(int[] arr, int l, int r, int k){
+        if(l == r) return arr[k];
+        int p1 = l;
+        int p2 = r;
+        int cur = arr[p1];
+        while (p1 < r && p2 < r){
+            while (arr[p2] > cur){
+                r--;
+            }
+            while (arr[p1] < cur){
+                l++;
+            }
+            if(l < r) swap(arr,l,r);
+        }
+        if(k < p2) return qSelect(arr,l,p2,k);
+        else return qSelect(arr,p2,r,k);
+    }
+
 }

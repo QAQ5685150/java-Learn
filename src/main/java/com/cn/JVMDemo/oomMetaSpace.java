@@ -35,10 +35,16 @@ public class oomMetaSpace {
 
                 Test testProxy = (Test) enhancer.create();
                 System.out.println("当前创建了 " + (++count) + "个代理类");
+                testProxy.method();
+
             }
         }
 
 
         static class Test {
+
+            public void method(){
+                System.out.println("proxy method run" + Thread.currentThread().getName());
+            }
         }
 }

@@ -10,7 +10,7 @@ import com.cn.Algorithm.util.printUtils;
  */
 public class bubbleSort {
 
-    public static int[] bubbleSort(int[] arr){
+    public static int[] bubbleSort_not(int[] arr){
         int len = arr.length;
         if (arr == null || len < 2) {
             return null;
@@ -21,9 +21,27 @@ public class bubbleSort {
                     swap(arr,i,j);
                 }
             }
+            printUtils.printArray(arr);
         }
         return arr;
     }
+
+    public static int[] bubbleSort(int[] arr){
+        int len = arr.length;
+        if (arr == null || len < 2) {
+            return null;
+        }
+        for (int i = 0; i < len - 1; i++) {
+            for (int j = 0; j < len - i - 1; j++) {
+                if(arr[j] >= arr[j + 1]){
+                    swap(arr,j,j + 1);
+                }
+            }
+            printUtils.printArray(arr);
+        }
+        return arr;
+    }
+
 
     public static void swap(int[] arr, int i, int j){
         arr[i] = arr[i] ^ arr[j];
