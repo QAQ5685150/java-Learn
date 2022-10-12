@@ -1,4 +1,4 @@
-package com.cn.DesignModel.Adpter;
+package com.cn.DesignModel.adpter;
 
 /**
  * 类名:mssages

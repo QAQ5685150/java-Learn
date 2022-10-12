@@ -1,4 +1,4 @@
-package com.cn.DesignModel.Adpter;
+package com.cn.DesignModel.adpter;
 
 import com.alibaba.fastjson.JSON;
 

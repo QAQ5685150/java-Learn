@@ -1,8 +1,8 @@
-package com.cn.DesignModel.viewerReview;
+package com.cn.DesignModel.viewer.viewerReview;
 
 /**
  * @Author: Linxx
- * @Package: com.cn.DesignModel.viewerReview
+ * @Package: com.cn.DesignModel.viewer.viewerReview
  * @Time: 2022-09-26 16:48
  * @Description: TODO
  **/

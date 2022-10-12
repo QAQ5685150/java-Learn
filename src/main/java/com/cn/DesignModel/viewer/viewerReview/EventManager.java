@@ -1,4 +1,4 @@
-package com.cn.DesignModel.viewerReview;
+package com.cn.DesignModel.viewer.viewerReview;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * @Author: Linxx
- * @Package: com.cn.DesignModel.viewerReview
+ * @Package: com.cn.DesignModel.viewer.viewerReview
  * @Time: 2022-09-26 16:49
  * @Description: TODO
  **/

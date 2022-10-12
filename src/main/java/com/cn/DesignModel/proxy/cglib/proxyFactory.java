@@ -1,4 +1,4 @@
-package com.cn.JdkDemo.proxy.cglib;
+package com.cn.DesignModel.proxy.cglib;
 
 import com.cn.JdkDemo.reflection.demo01;
 import net.sf.cglib.proxy.Enhancer;
@@ -24,8 +24,8 @@ public class proxyFactory implements MethodInterceptor {
         enhancer.setSuperclass(clazz);
     }
 
-    public Object getNewInstance(){
-        return enhancer.create(this.clazz,this);
+    public Object getNewInstance() {
+        return enhancer.create(this.clazz, this);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class proxyFactory implements MethodInterceptor {
 
     public static void main(String[] args) {
         proxyFactory pf = new proxyFactory(demo01.class);
-        demo01 newInstance = (demo01)pf.getNewInstance();
+        demo01 newInstance = (demo01) pf.getNewInstance();
         newInstance.NotStatic();
     }
 }

@@ -33,11 +33,11 @@ public class modelTwo extends model{
 
     @Override
     protected void threadStep() {
-        System.out.println("step2:" + "把" + this.to + "放到" + this.from + "里");
+        System.out.println("step3:" + "把" + this.to + "放到" + this.from + "里");
     }
 
     @Override
     protected void forthStep() {
-        System.out.println("step3:" + "把" + this.from + "关上");
+        System.out.println("step4:" + "把" + this.from + "关上");
     }
 }

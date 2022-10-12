@@ -17,7 +17,7 @@ public class oomMetaSpace {
      *
      * jvm options:
      * -XX:MetaspaceSize=10m -XX:MaxMetaspaceSize=10m -XX:+UseParNewGC -XX:+UseConcMarkSweepGC
-     * -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=hprof/metadata-oom
+     * -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=src\main\resources
      */
 
         public static void main(String[] args) {

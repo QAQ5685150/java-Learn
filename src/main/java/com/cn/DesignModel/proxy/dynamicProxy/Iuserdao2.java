@@ -1,4 +1,4 @@
-package com.cn.JdkDemo.proxy.dynamicProxy;
+package com.cn.DesignModel.proxy.dynamicProxy;
 
 /**
  * 类名:Iuserdao2

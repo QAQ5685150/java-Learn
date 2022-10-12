@@ -1,4 +1,4 @@
-package com.cn.JdkDemo.proxy.staticProxy;
+package com.cn.DesignModel.proxy.staticProxy;
 
 /**
  * 类名:IuserdaoImpl

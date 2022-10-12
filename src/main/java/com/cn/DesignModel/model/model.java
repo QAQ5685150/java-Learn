@@ -30,6 +30,10 @@ public abstract class model {
         forthStep();
     }
 
+    protected void test(){
+        System.out.println("this is a method from abstract class");
+    }
+
     protected abstract void firstStep();
 
     protected abstract void secondStep();
@@ -46,5 +50,33 @@ class test{
         System.out.println("=============");
         model m2 = new modelTwo("冰箱","大象","鸵鸟");
         m2.nextExec();
+        System.out.println("=============");
+        m2.firstStep();
+        System.out.println("=============");
+
+        //抽象类可以实例化，但实例化的对象必须重写抽象类的抽象方法
+        model m = new model("from","to") {
+            @Override
+            protected void firstStep() {
+
+            }
+
+            @Override
+            protected void secondStep() {
+
+            }
+
+            @Override
+            protected void threadStep() {
+
+            }
+
+            @Override
+            protected void forthStep() {
+
+            }
+        };
+
+        m.test();
     }
 }
