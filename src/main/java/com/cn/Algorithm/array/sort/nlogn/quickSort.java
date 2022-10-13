@@ -162,14 +162,14 @@ public class quickSort {
         int p1 = l;
         int p2 = r;
         int cur = arr[p1];
-        while (p1 < r && p2 < r){
+        while (p1 < p2){
             while (arr[p2] > cur){
-                r--;
+                p2--;
             }
             while (arr[p1] < cur){
-                l++;
+                p1++;
             }
-            if(l < r) swap(arr,l,r);
+            if(p1 < p2) swap(arr,p1,p2);
         }
         if(k < p2) return qSelect(arr,l,p2,k);
         else return qSelect(arr,p2,r,k);
