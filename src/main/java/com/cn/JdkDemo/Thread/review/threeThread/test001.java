@@ -30,17 +30,17 @@ public class test001 {
             //到100时，还有两个程序只是被卡在了lock外，还是进入了while循环
             //所以就会出现执行到了102条的情况
             lock.lock();
-                if(index % 3 != target){
-                    try {
-                        cur.await();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+            if(index % 3 != target){
+                try {
+                    cur.await();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-                System.out.println("售票站 " + s + " 正在出售第 " + index + " 张票");
-                index++;
-                next.signalAll();
-                lock.unlock();
+            }
+            System.out.println("售票站 " + s + " 正在出售第 " + index + " 张票");
+            index++;
+            next.signalAll();
+            lock.unlock();
         }
     }
 

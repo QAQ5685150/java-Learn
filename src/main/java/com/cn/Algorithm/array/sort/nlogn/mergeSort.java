@@ -120,4 +120,35 @@ public class mergeSort {
             help[i + l] = help[i];
         }
     }
+
+
+    public static void merge_re(int[] arr, int l, int r){
+        if(l == r){
+            return;
+        }
+        int mid = (l + (r - l) >> 1);
+        merge(arr,l,mid);
+        merge(arr,mid + 1, l);
+        mergerSort_re(arr,l,mid,r);
+    }
+
+    public static void mergerSort_re(int[] arr, int l,int mid, int r){
+        int[] help = new int[r - l + 1];
+        int p1 = l;
+        int p2 = mid;
+        int index = 0;
+        while (p1 < mid && p2 < r){
+            if(arr[p1] > arr[p2]) help[index++] = arr[p1++];
+            else help[index++] = arr[p2++];
+        }
+        while (p1 < mid){
+            help[index++] = arr[p1++];
+        }
+        while (p2 < r){
+            help[index++] = arr[p2++];
+        }
+        for (int i = 0; i < help.length; i++) {
+            arr[l + i] = help[i];
+        }
+    }
 }
