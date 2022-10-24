@@ -50,6 +50,7 @@ public class numFriendRequests_825 {
 
     /**
     *功能描述:二分 + 排序 找左右边界再加到ans
+     * 对双重循环第二个循环用二分的优化，在一个大范围上找左右边界用二分的思想降低时间复杂度
     *@param ages
     *@return int
     **/
@@ -81,7 +82,7 @@ public class numFriendRequests_825 {
         return ans;
     }
 
-    /**
+    /** 20 30 100 110 120
     *功能描述: 排序 + 前缀和
     *@param ages
     *@return int
@@ -105,7 +106,7 @@ public class numFriendRequests_825 {
     public static int numFriendRequests2(int[] ages) {
         int[] cnt = new int[121];
         for (int age : ages) {
-            ++cnt[age];
+            ++cnt[age];//计数数组
         }
         int[] pre = new int[121];
         for (int i = 1; i <= 120; ++i) {
@@ -113,8 +114,11 @@ public class numFriendRequests_825 {
         }
         int ans = 0;
         for (int i = 15; i <= 120; ++i) {
+            //存在的用户才会计数
             if (cnt[i] > 0) {
+                //找到符合条件的范围(用数组下标表示年龄，在条件中表示符合ages[y] <= 0.5 * ages[x] + 7的用户)
                 int bound = (int) (i * 0.5 + 8);
+                //pre[i] - pre[bound - 1]用前缀和表示这一个范围内有多少用户
                 ans += cnt[i] * (pre[i] - pre[bound - 1]);
             }
         }

@@ -147,6 +147,14 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[1894]找到需要补充粉笔的学生编号.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[1894]找到需要补充粉笔的学生编号.java" />
+              <option name="questionId" value="2006" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[1995]Count Special Quadruplets.java">
           <value>
             <LeetcodeEditor>
@@ -383,6 +391,14 @@
           <value>
             <LeetcodeEditor>
               <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[447]Number of Boomerangs.java" />
+              <option name="questionId" value="447" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[447]回旋镖的数量.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[447]回旋镖的数量.java" />
               <option name="questionId" value="447" />
             </LeetcodeEditor>
           </value>
@@ -663,6 +679,14 @@
           <value>
             <LeetcodeEditor>
               <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[825]Friends Of Appropriate Ages.java" />
+              <option name="questionId" value="852" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[825]适龄的朋友.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[825]适龄的朋友.java" />
               <option name="questionId" value="852" />
             </LeetcodeEditor>
           </value>
