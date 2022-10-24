@@ -24,7 +24,7 @@ public class nextGreatestLetter_744 {
         while (l < r){
             mid = (l + r) / 2;
             int cur = letters[mid] - 'a';
-            if(cur > tar){
+            if(cur >= tar){
                 r = mid;
             }else {
                 l = mid + 1;
