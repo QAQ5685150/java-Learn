@@ -67,6 +67,12 @@
             <version>8.0.23</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.esotericsoftware</groupId>
+            <artifactId>reflectasm</artifactId>
+            <version>1.11.9</version>
+        </dependency>
+
 <!--        <dependency>-->
 <!--            <groupId>net.jcip</groupId>-->
 <!--            <artifactId>jcip-annotations</artifactId>-->

@@ -10,7 +10,7 @@ package com.cn.Pojo;
  **/
 public class user implements Comparable<user> {
 
-    private String name;
+    public String name;
 
     @Override
     public String toString() {
