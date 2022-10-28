@@ -24,6 +24,8 @@ public class MyLock implements Lock {
                 System.out.println("thread name can't check out");
                 return false;
             }
+            //和一个变量比较是否为期望值，是就加锁
+            //可以用cas，也可以用一个int变量state，类似reentrantLock的实现方式
             if(compareAndSetState(0,arg)){
                 System.out.println(name + " get lock!");
                 return true;

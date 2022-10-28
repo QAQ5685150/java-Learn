@@ -48,7 +48,9 @@ public class mergeSort {
 
     public static void main(String[] args) {
         int[] test = new int[]{9,4,6,5,1,3,2,7,6,4};
-        mergeSort_review(test,0, test.length - 1);
+        //mergeSort_review(test,0, test.length - 1);
+
+        merge_re(test,0,test.length - 1);
         printUtils.printArray(test);
     }
 
@@ -126,9 +128,9 @@ public class mergeSort {
         if(l == r){
             return;
         }
-        int mid = (l + (r - l) >> 1);
-        merge(arr,l,mid);
-        merge(arr,mid + 1, l);
+        int mid = (l + ((r - l) >> 1));
+        merge_re(arr,l,mid);
+        merge_re(arr,mid + 1, l);
         mergerSort_re(arr,l,mid,r);
     }
 
@@ -137,14 +139,14 @@ public class mergeSort {
         int p1 = l;
         int p2 = mid;
         int index = 0;
-        while (p1 < mid && p2 < r){
+        while (p1 <= mid && p2 <= r){
             if(arr[p1] > arr[p2]) help[index++] = arr[p1++];
             else help[index++] = arr[p2++];
         }
-        while (p1 < mid){
+        while (p1 <= mid){
             help[index++] = arr[p1++];
         }
-        while (p2 < r){
+        while (p2 <= r){
             help[index++] = arr[p2++];
         }
         for (int i = 0; i < help.length; i++) {

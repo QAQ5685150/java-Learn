@@ -12,6 +12,8 @@ import java.util.concurrent.locks.ReentrantLock;
 public class testLock {
 
     private static int mark = 0;
+
+
     static MyLock lock = new MyLock();
     static Condition condition1 = lock.newCondition();
     static Condition condition2 = lock.newCondition();
@@ -19,6 +21,7 @@ public class testLock {
     static ReentrantLock reentrantLock = new ReentrantLock();
     static Condition condition11 = reentrantLock.newCondition();
     static Condition condition22 = reentrantLock.newCondition();
+
     /**
      * AQS提供了Condition组件完成多线程之间通讯，
      * condition类似于object类里的等待、唤醒方法
@@ -66,5 +69,41 @@ public class testLock {
         },"linxx - 2");
         a.start();
         b.start();
+        //以上代码未经封装，写法随意，没有抽象思维
+
+        //将逻辑抽象成一个方法
+        testLock test = new testLock();
+        Thread thread1 = new Thread(() -> test.t1());
+        Thread thread = new Thread(() -> test.t2());
+        thread1.start();
+        thread.start();
     }
+
+    public void t1(){
+        reconstruct(condition11,condition22,0);
+    }
+
+    public void t2(){
+        reconstruct(condition22,condition11,1);
+    }
+
+    public void reconstruct(Condition cur,Condition next,int target){
+        while (mark <= 100){
+            reentrantLock.lock();
+            try {
+            if (mark % 2 == target ? true : false){
+                cur.await();
+            }
+            mark++;
+            System.out.println(Thread.currentThread().getName() + " get lock " + mark);
+            next.signalAll();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }finally {
+                reentrantLock.unlock();
+            }
+        }
+    }
+
+
 }

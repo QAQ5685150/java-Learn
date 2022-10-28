@@ -1,7 +1,5 @@
 package com.cn.JdkDemo.Thread.Join;
 
-import lombok.Synchronized;
-
 /**
  * @Author: Linxx
  * @Package: com.cn.JdkDemo.Thread.Join

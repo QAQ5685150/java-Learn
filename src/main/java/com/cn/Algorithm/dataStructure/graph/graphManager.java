@@ -2,6 +2,7 @@ package com.cn.Algorithm.dataStructure.graph;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * 类名: graphManager
@@ -11,11 +12,18 @@ import java.util.List;
  **/
 public class graphManager {
 
+    private static ReentrantLock reentrantLock = new ReentrantLock();
+
     /**
      * 功能描述:获取图的邻接表测试数据
      * @return com.cn.algorithm.dataStructure.graph.graphList
      **/
     public static graphList getGlTestData() {
+        if (reentrantLock.tryLock()) {
+            getGmTestData();
+
+        }
+        reentrantLock.lock();
         graphList gl;
         synchronized (graphManager.class) {
             List<VertexNode> vertexNodes = Arrays.asList(new VertexNode("A"), new VertexNode("B"), new VertexNode("C"),
@@ -30,6 +38,7 @@ public class graphManager {
                     new EdgeNode(2, 3, 1), new EdgeNode(6, 7, 1), new EdgeNode(3, 7, 1),
                     new EdgeNode(3, 4, 1), new EdgeNode(3, 6, 1), new EdgeNode(4, 7, 1));
         }
+        reentrantLock.unlock();
         return gl;
     }
 
