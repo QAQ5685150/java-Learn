@@ -11,8 +11,6 @@ import java.util.List;
  * 姓名:南风
  * 日期:2021-08-19 15:45
  **/
-
-
 public class TableCreator {
     public static void main(String[] args) throws Exception {
         Class<?> cl = TableCreator.class.getClass().getClassLoader().loadClass("com.cn.ThinkingJava.Annotation.database.Member");

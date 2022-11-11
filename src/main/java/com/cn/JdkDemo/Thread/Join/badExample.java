@@ -9,28 +9,42 @@ package com.cn.JdkDemo.Thread.Join;
 public class badExample {
     Integer total = 9;
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws InterruptedException {
+        badExample badExample = new badExample();
+        badExample.take();
     }
 
-    class takeApple{
+    public void take() throws InterruptedException {
+        takeApple takeApple = new takeApple(new monkey(3));
+        takeApple takeApple1 = new takeApple(new monkey(2));
+        Thread t1 = new Thread(takeApple);
+        Thread t2 = new Thread(takeApple1);
+
+        t1.start();
+        t2.start();
+
+        t1.join();
+        t2.join();
+    }
+
+    class takeApple implements Runnable{
         monkey m;
         takeApple(monkey m){
             this.m = m;
         }
-        public void take(){
+        @Override
+        public void run() {
             while (true){
                 synchronized (total){
                     if(total - m.count <= 0){
                         total.notify();
                         break;
                     }
+                    total -= m.count;
                 }
                 System.out.println(Thread.currentThread().getName() + " get apple ,left " + total);
             }
-
         }
-
     }
 
     class monkey{
