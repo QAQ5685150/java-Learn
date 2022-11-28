@@ -8,7 +8,9 @@ import java.util.concurrent.*;
 
 /**
  * 类名:countDownDemo
- * 描述:模拟 CountDownLatch 并发
+ * 描述:模拟 CountDownLatch 并发生产端 放入阻塞队列BlockingQueue
+ * 生产端可以从阻塞队列拿数据，解耦 & 提高处理速度
+ * 自定义线程池工厂、拒绝策列
  * 姓名:南风
  * 日期:2021-10-27 13:54
  **/
@@ -58,7 +60,8 @@ class task implements Runnable{
             System.out.println(Thread.currentThread().getName() + " process " + take + " ok!");
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }finally {
+            countDownLatch.countDown();
         }
-        countDownLatch.countDown();
     }
 }

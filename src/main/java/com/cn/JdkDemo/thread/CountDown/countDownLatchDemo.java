@@ -14,40 +14,37 @@ public class countDownLatchDemo {
 
     public static void main(String[] args) throws Exception {
         CountDownLatch countDownLatch = new CountDownLatch(3);
-        Data mysqlData = new Data(4);
-        Data redisData = new Data(5);
-        Data mongoData = new Data(3);
+        Data mysqlData = new Data(4,countDownLatch);
+        Data redisData = new Data(5,countDownLatch);
+        Data mongoData = new Data(3,countDownLatch);
         new Thread(() -> {
             res += mongoData.getTotal();
-            countDownLatch.countDown();
         }).start();
 
         new Thread(() -> {
             res += redisData.getTotal();
-            countDownLatch.countDown();
         }).start();
 
         new Thread(() -> {
             res += mysqlData.getTotal();
-            countDownLatch.countDown();
         }).start();
-
         countDownLatch.await();
-
         System.out.println(res);
     }
-
-
 }
 
 class Data{
     private int total;
 
-    public Data(int total){
+    private CountDownLatch countDownLatch;
+
+    public Data(int total,CountDownLatch countDownLatch){
         this.total = total;
+        this.countDownLatch = countDownLatch;
     }
 
     public int getTotal(){
+        this.countDownLatch.countDown();
         return total;
     }
 }
