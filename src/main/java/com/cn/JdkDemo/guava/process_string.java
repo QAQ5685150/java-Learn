@@ -7,6 +7,8 @@ import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 类名: process_string
@@ -46,5 +48,20 @@ public class process_string {
 
         //和上面正好相反
         System.out.println(charMatcher.removeFrom("123qwe123"));
+    }
+
+    /**
+     * pattern示例 替换所有空格 换行符
+     * @param str
+     * @return
+     */
+    public static String replaceBlank(String str) {
+        String dest = "";
+        if (str != null) {
+            Pattern p = Pattern.compile("\\s*|\t|\r|\n");
+            Matcher m = p.matcher(str);
+            dest = m.replaceAll("");
+        }
+        return dest;
     }
 }

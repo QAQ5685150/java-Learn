@@ -6,7 +6,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  * @Author: Linxx
  * @Package: com.cn.JdkDemo.blockQueue
  * @Time: 2022-11-28 13:29
- * @Description: jdk1.8 linkedQueue bug recurrent,stream process linkedQueue while block current thread
+ * @Description: jdk1.8 linkedQueue bug recurrent,stream process linkedQueue will block current thread
  **/
 public class linkedQueueTest {
     public static void main(String[] args) throws Exception {
