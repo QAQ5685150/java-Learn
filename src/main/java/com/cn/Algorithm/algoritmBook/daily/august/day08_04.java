@@ -3,9 +3,7 @@ package com.cn.Algorithm.algoritmBook.daily.august;
 import com.cn.Algorithm.dataStructure.tree.TreeNode;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @Author: Linxx
@@ -24,19 +22,20 @@ public class day08_04 implements Serializable {
 
     /**
      * 树的非递归中序遍历
+     *
      * @param root
      */
-    public static void mid(TreeNode root){
+    public static void mid(TreeNode root) {
         Stack<TreeNode> stack = new Stack<>();
         stack.add(root);
-        while (!stack.isEmpty()){
-            while (root.left != null){
+        while (!stack.isEmpty()) {
+            while (root.left != null) {
                 stack.push(root.left);
                 root = root.left;
             }
             root = stack.pop();
             System.out.print(root.val + " ");
-            if(root.right != null){
+            if (root.right != null) {
                 root = root.right;
                 stack.push(root);
             }
@@ -45,19 +44,20 @@ public class day08_04 implements Serializable {
 
     /**
      * hash 两数之和
+     *
      * @param numbers
      * @param target
      * @return
      */
-    public static int[] twoSum (int[] numbers, int target) {
+    public static int[] twoSum(int[] numbers, int target) {
         // write code here
-        Map<Integer,Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
         int[] res = new int[2];
-        for(int i = 0; i < numbers.length; i++){
+        for (int i = 0; i < numbers.length; i++) {
             map.put(numbers[i], i + 1);
         }
-        for(int i = 0; i < numbers.length; i++){
-            if(map.containsKey(target - numbers[i])){
+        for (int i = 0; i < numbers.length; i++) {
+            if (map.containsKey(target - numbers[i])) {
                 res[0] = i + 1;
                 res[1] = map.get(target - numbers[i]);
                 break;
@@ -67,8 +67,8 @@ public class day08_04 implements Serializable {
     }
 
 
-    public static String serialized(TreeNode node){
-        if (node == null){
+    public static String serialized(TreeNode node) {
+        if (node == null) {
             return "#!";
         }
         String res = node.val + "#";
@@ -77,16 +77,23 @@ public class day08_04 implements Serializable {
         return res;
     }
 
-    public static TreeNode deSerialized(String serial){
-
-
-        return helper();
+    public static TreeNode deSerialized(String serial) {
+        String[] split = serial.split("!");
+        Queue<String> queue = new ArrayDeque<>();
+        for (String s : split) {
+            queue.add(s);
+        }
+        return helper(queue);
     }
 
-    public static TreeNode helper(){
+    public static TreeNode helper(Queue<String> queue) {
+        String poll = queue.poll();
+        if (poll.equals("#")) {
+            return null;
+        }
         TreeNode root = new TreeNode();
-
-
+        root.left = helper(queue);
+        root.right = helper(queue);
         return root;
     }
 

@@ -1,7 +1,5 @@
 package com.cn.JdkDemo.thread.Join;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * @Author: Linxx
@@ -30,7 +28,7 @@ public class cainiao_review {
     }
 
 
-    public class task implements Runnable{
+    public class task implements Runnable {
 
         private monkey monkey;
 
@@ -40,9 +38,11 @@ public class cainiao_review {
 
         @Override
         public void run() {
-            while (true){
-                synchronized (count){
-                    if (count - monkey.take <= 0){
+            //死锁的四大条件：1、请求保持 2、不可剥夺 3、循环等待 4、互斥
+            //多线程编程要明确：1、锁哪些资源 2、保持循环的条件 3、何时退出程序 4、如何处理互斥的两个线程加锁解锁
+            while (true) {
+                synchronized (count) {
+                    if (count - monkey.take <= 0) {
                         count.notify();
                         break;
                     }
@@ -54,7 +54,7 @@ public class cainiao_review {
     }
 }
 
-class monkey{
+class monkey {
 
     Integer take;
 

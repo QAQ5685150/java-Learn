@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
  */
 public class demo01 {
     public static void main(String[] args) {
-        return01();
+        System.out.println(return01());
     }
 
     /**
